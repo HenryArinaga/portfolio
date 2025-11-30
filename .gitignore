@@ -138,14 +138,13 @@ dist
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 
-profile.jpg
+src/assets/profile.jpg
 
 # Mac system files
 .DS_Store
 src/.DS_Store
 **/.DS_Store
 
-*.png 
-*.jpg
-
-public/images
+# Large background art (keep local)
+public/images/footer-bg.png
+public/images/hero-bg.png
