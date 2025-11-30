@@ -140,6 +140,10 @@ vite.config.ts.timestamp-*
 
 profile.jpg
 
+# Mac system files
 .DS_Store
 src/.DS_Store
 **/.DS_Store
+
+*.png 
+*.jpg
