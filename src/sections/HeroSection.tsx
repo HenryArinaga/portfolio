@@ -1,10 +1,8 @@
 import profileImg from '../assets/profile.jpg';
-
 const HeroSection = () => {
     return (
       <section className="hero">
         <div className="hero-background">
-          {/* stars / moon / shooting stars will be here later */}
         </div>
   
         <div className="hero-content">

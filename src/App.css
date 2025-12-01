@@ -1,7 +1,21 @@
+:root {
+  --bg-page: #0a1023;
+  --bg-section: #0a1023;
+  --bg-card: rgba(5, 8, 22, 0.25);
+  --text-main: #e5e7eb;
+  --text-muted: #9ca3af;
+  --accent-blue: #8ab4ff;
+  --accent-sky: #38bdf8;
+  --accent-indigo: #818cf8;
+  --border-subtle: rgba(148, 163, 184, 0.35);
+}
+
+/* App root */
+
 .App {
   min-height: 100vh;
-  background: #050816; 
-  color: #ffffff;
+  background: var(--bg-page);
+  color: var(--text-main);
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
     sans-serif;
 }
@@ -15,21 +29,45 @@
   align-items: center;
   justify-content: center;
   padding: 2rem;
-}
-
-.hero-background {
-  position: absolute;
-  inset: 0;
-  /* stars / gradients later */
+  background: var(--bg-section);
+  overflow: hidden;
 }
 
 .hero-content {
   position: relative;
+  z-index: 1;
   text-align: center;
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  padding: 2rem 2.5rem;
+  border-radius: 1rem;
+  background: var(--bg-card);
+  backdrop-filter: blur(4px);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.6);
 }
+
+.hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: min(100vh, 900px);
+  background-image: 
+    linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 65%,
+      var(--bg-page) 100%
+    ),
+    url('/images/header-bg.png');
+  background-size: 100% auto;
+  background-position: center top;
+  background-repeat: no-repeat;
+  z-index: 0;
+  overflow: hidden;
+}
+
+/* No glow, no shooting star */
 
 .hero-profile img {
   width: 140px;
@@ -69,12 +107,12 @@
   opacity: 0.7;
 }
 
-
 /* About Section */
+
 .about {
   min-height: 60vh;
   padding: 4rem 2rem;
-  background: #050816;
+  background: var(--bg-section);
   display: flex;
   justify-content: center;
 }
@@ -111,9 +149,10 @@
 }
 
 /* Projects Section */
+
 .projects {
   padding: 4rem 2rem;
-  background: #050816;
+  background: var(--bg-section);
   display: flex;
   justify-content: center;
 }
@@ -170,7 +209,7 @@
 .project-link {
   margin-top: 0.5rem;
   font-size: 0.9rem;
-  color: #8ab4ff;
+  color: var(--accent-blue);
 }
 
 .project-link:hover {
@@ -196,9 +235,10 @@
 }
 
 /* Blog Section */
+
 .blog {
   padding: 4rem 2rem 5rem;
-  background: #050816;
+  background: var(--bg-section);
   display: flex;
   justify-content: center;
 }
@@ -223,7 +263,7 @@
   padding: 1.25rem 1.5rem;
   border-radius: 0.9rem;
   background: rgba(15, 23, 42, 0.8);
-  border: 1px solid rgba(148, 163, 184, 0.35);
+  border: 1px solid var(--border-subtle);
 }
 
 .blog-post-header {
@@ -260,7 +300,7 @@
   border-radius: 999px;
   border: 1px solid rgba(148, 163, 184, 0.7);
   background: transparent;
-  color: #e5e7eb;
+  color: var(--text-main);
   font-size: 0.9rem;
   cursor: pointer;
 }
@@ -273,7 +313,13 @@
 
 .footer {
   padding: 4rem 2rem 2.5rem;
-  background-image: url('/images/footer-bg.png');
+  background-image:
+    linear-gradient(
+      to bottom,
+      var(--bg-page) 0%,
+      rgba(5, 8, 22, 0) 50%
+    ),
+    url('/images/footer-bg.png');
   background-size: cover;
   background-position: center bottom;
   background-repeat: no-repeat;
@@ -281,41 +327,26 @@
   color: #ffffff;
   overflow: hidden;
 
-  /* animation starting state */
   opacity: 0;
   transform: translateY(40px);
   transition: opacity 800ms ease-out, transform 800ms ease-out;
 }
 
-/* dark overlay */
-.footer::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to bottom,
-    #050816 0%,
-    #050816 25%,
-    rgba(5, 8, 22, 0.9) 35%,
-    rgba(5, 8, 22, 0.6) 55%,
-    rgba(5, 8, 22, 0.35) 75%,
-    rgba(5, 8, 22, 0.0) 100%
-  );
-  z-index: 0;
+.footer * {
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.75);
 }
-
 
 .footer-inner {
-  position: relative;
-  z-index: 1;
+  background: var(--bg-card);
+  backdrop-filter: blur(2px);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
 }
 
-/* when visible, fade in + slide up */
 .footer-visible {
   opacity: 1;
   transform: translateY(0);
 }
-
 
 .footer-content {
   max-width: 520px;
@@ -360,4 +391,3 @@
 .footer-link:hover {
   text-decoration: underline;
 }
-

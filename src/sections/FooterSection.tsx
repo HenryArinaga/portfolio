@@ -15,13 +15,12 @@ const FooterSection = () => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             setIsVisible(true);
-            // We only need the animation once, so stop observing
             observer.unobserve(entry.target);
           }
         });
       },
       {
-        threshold: 0.3 // trigger when ~30% of footer is visible
+        threshold: 0.3 
       }
     );
 
