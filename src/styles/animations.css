@@ -47,4 +47,19 @@
     transition-delay: 0.12s;
   }
  
+  .blog-post {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 600ms ease-out, transform 600ms ease-out;
+  }
+  
+  .blog-post.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .blog-post.delay-1 { transition-delay: 0.1s; }
+  .blog-post.delay-2 { transition-delay: 0.25s; }
+  .blog-post.delay-3 { transition-delay: 0.4s; }
+  
   
