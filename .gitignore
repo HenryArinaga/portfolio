@@ -138,7 +138,6 @@ dist
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 
-src/assets/profile.jpg
 
 # Mac system files
 .DS_Store

@@ -23,6 +23,7 @@ const HeroSection = () => {
         <a href="https://github.com/henryarin" target="_blank" rel="noreferrer">GitHub</a>
         <a href="https://www.linkedin.com/in/henryarinaga/" target="_blank" rel="noreferrer">LinkedIn</a>
         <a href="mailto:Henryarinaga@gmail.com">Email</a>
+        
         </div>
 
         <div className="hero-scroll-indicator">

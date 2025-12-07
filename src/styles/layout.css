@@ -386,7 +386,7 @@
       var(--bg-page) 0%,
       rgba(5, 8, 22, 0) 50%
     ),
-    url('/portfolio/images/footer-bg.png');
+    url('/public/images/footer-bg.png');
   background-size: cover;
   background-position: center bottom;
   background-repeat: no-repeat;
