@@ -16,10 +16,7 @@ const Navbar = () => {
   return (
     <nav className={`navbar ${scrolled ? "navbar-small" : ""}`}>
       <div className="navbar-inner">
-        <a href="#hero" className="navbar-logo">
-          Henry Arinaga
-        </a>
-
+      <a href="#hero" className="navbar-logo">Henry Arinaga</a>
         <div className="navbar-links">
           <a href="#about" className={active === "about" ? "active" : ""}>About</a>
           <a href="#projects" className={active === "projects" ? "active" : ""}>Projects</a>

@@ -2,7 +2,7 @@ import profileImg from "../assets/profile.jpg";
 
 const HeroSection = () => {
   return (
-    <section className="hero">
+    <section className="hero" id="hero">
       <div className="hero-background"></div>
 
       <div className="hero-content hero-enter">
