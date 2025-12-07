@@ -12,9 +12,13 @@ function App() {
     <div className="App">
       <Navbar />
       <HeroSection />
+      <div className="section-elevation"></div>
       <AboutSection />
+      <div className="section-elevation"></div>
       <ProjectsSection />
+      <div className="section-elevation"></div>
       <BlogSection />
+      <div className="section-elevation"></div>
       <FooterSection />
     </div>
   );
