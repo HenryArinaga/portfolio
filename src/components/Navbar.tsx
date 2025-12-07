@@ -1,21 +1,34 @@
+import { useEffect, useState } from "react";
+import useActiveSection from "../hooks/useActiveSection";
+
 const Navbar = () => {
-    return (
-      <nav className="navbar">
-        <div className="navbar-inner">
-          <a href="#hero" className="navbar-logo">
-            Henry Arinaga
-          </a>
-  
-          <div className="navbar-links">
-            <a href="#about">About</a>
-            <a href="#projects">Projects</a>
-            <a href="#blog">Blog</a>
-            <a href="#contact">Contact</a>
-          </div>
+  const active = useActiveSection(["hero", "about", "projects", "blog", "contact"]);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => {
+      setScrolled(window.scrollY > 30);
+    };
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  return (
+    <nav className={`navbar ${scrolled ? "navbar-small" : ""}`}>
+      <div className="navbar-inner">
+        <a href="#hero" className="navbar-logo">
+          Henry Arinaga
+        </a>
+
+        <div className="navbar-links">
+          <a href="#about" className={active === "about" ? "active" : ""}>About</a>
+          <a href="#projects" className={active === "projects" ? "active" : ""}>Projects</a>
+          <a href="#blog" className={active === "blog" ? "active" : ""}>Blog</a>
+          <a href="#contact" className={active === "contact" ? "active" : ""}>Contact</a>
         </div>
-      </nav>
-    );
-  };
-  
-  export default Navbar;
-  
+      </div>
+    </nav>
+  );
+};
+
+export default Navbar;
