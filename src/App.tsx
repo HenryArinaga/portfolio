@@ -4,12 +4,14 @@ import ProjectsSection from './sections/ProjectsSection';
 import BlogSection from './sections/BlogSection';
 import FooterSection from './sections/FooterSection';
 import Navbar from "./components/Navbar";
+import StarTrail from "./components/StarTrail";
 import './styles/layout.css';
 import "./styles/animations.css";
 
 function App() {
   return (
     <div className="App">
+      <StarTrail />
       <Navbar />
       <HeroSection />
       <div className="section-elevation"></div>

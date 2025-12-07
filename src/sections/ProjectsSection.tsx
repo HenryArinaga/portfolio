@@ -13,26 +13,25 @@ const projects: Project[] = [
   {
     title: "RSAlite",
     description:
-      "An educational RSA factorization tool written in C that lets users explore prime numbers, factorization methods, and timing comparisons.",
-    tech: ["C", "Make", "GTK (planned)", "CLI"],
-    highlights: [
-      "O(√n) optimized prime-checking",
-      "Multiple factorization methods (trial division, sqrt)",
-      "Benchmarked execution paths",
-      "Modular architecture for algorithm swapping",
-    ],
-    link: "https://github.com/henryarin/rsalite",
+      "An educational RSA factorization tool written in C. Lets users explore prime generation, integer factorization, and performance differences between algorithms while keeping the codebase small and readable.",
+    tech: ["C", "Make", "CLI", "GTK (planned)"],
     imageAlt: "RSAlite terminal output mockup",
+    link: "https://github.com/henryarin/rsalite",
+    highlights: [
+      "Modular design for swapping factorization methods",
+      "Comparison of trial division vs sqrt-based approaches and more",
+      "Clear separation between core logic and I/O"
+    ]
   },
-
   {
     title: "CPU Usage Visualizer",
     description:
-      "A C and X11-based visualizer that renders per-core CPU usage as smooth, animated bars using Linux /proc data.",
+      "A C and X11-based visualizer that reads /proc/stat and renders per-core CPU usage as smooth animated bars in real time.",
     tech: ["C", "X11", "Linux"],
-    imageAlt: "CPU usage bar graph mockup",
-  },
+    imageAlt: "CPU usage bar graph mockup"
+  }
 ];
+
 
 const ProjectsSection = () => {
   const { ref, isVisible } = useFadeInOnScroll();

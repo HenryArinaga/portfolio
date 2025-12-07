@@ -15,14 +15,14 @@ const HeroSection = () => {
         <div className="hero-name-divider"></div>
 
         <p className="hero-tagline">
-          Shoot for the stars, one commit at a time
+          Building backend systems, tools, and educational projects.
+        <p> CSUB Computer Science Student </p>
         </p>
 
         <div className="hero-socials">
-          <span>[GitHub]</span>
-          <span>[LinkedIn]</span>
-          <span>[Email]</span>
-          <span>[Discord]</span>
+        <a href="https://github.com/henryarin" target="_blank" rel="noreferrer">GitHub</a>
+        <a href="https://www.linkedin.com/in/henryarinaga/" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a href="mailto:Henryarinaga@gmail.com">Email</a>
         </div>
 
         <div className="hero-scroll-indicator">
