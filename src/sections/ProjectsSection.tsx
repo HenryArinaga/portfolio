@@ -1,3 +1,5 @@
+import useFadeInOnScroll from "../hooks/useFadeInOnScroll";
+
 type Project = {
     title: string;
     description: string;
@@ -25,8 +27,12 @@ type Project = {
   ];
   
   const ProjectsSection = () => {
+    const { ref, isVisible } = useFadeInOnScroll();
     return (
-      <section className="projects" id="projects">
+      <section 
+      ref={ref} 
+      className={`projects fade-in-section ${isVisible ? "is-visible" : ""}`}
+      id="projects">
         <div className="projects-inner">
           <h2 className="projects-title">Projects</h2>
   

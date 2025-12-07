@@ -1,3 +1,5 @@
+import useFadeInOnScroll from "../hooks/useFadeInOnScroll";
+
 type BlogPost = {
     title: string;
     date: string;
@@ -26,8 +28,11 @@ type BlogPost = {
   ];
   
   const BlogSection = () => {
+    const { ref, isVisible } = useFadeInOnScroll();
     return (
-      <section className="blog" id="blog">
+      <section ref={ref}
+      className={`blog fade-in-section ${isVisible ? "is-visible" : ""}`}
+      id="blog">
         <div className="blog-inner">
           <h2 className="blog-title">Blog</h2>
   
