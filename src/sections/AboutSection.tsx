@@ -1,6 +1,13 @@
+import useFadeInOnScroll from "../hooks/useFadeInOnScroll";
+
 const AboutSection = () => {
+  const { ref, isVisible } = useFadeInOnScroll();
     return (
-      <section className="about" id="about">
+      <section 
+      ref={ref}
+      className={`about fade-in-section ${isVisible ? "is-visible" : ""}`} 
+        id="about"
+        >
         <div className="about-content">
           <h2 className="about-title">Who am I?</h2>
   
