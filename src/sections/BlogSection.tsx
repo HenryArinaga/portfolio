@@ -1,12 +1,10 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import useFadeInOnScroll from "../hooks/useFadeInOnScroll";
 import { fetchPosts } from "../services/blogApi";
 import type { BlogPost } from "../services/blogApi";
 
 const BlogSection = () => {
   const { ref, isVisible } = useFadeInOnScroll();
-  const navigate = useNavigate();
 
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
@@ -26,6 +24,18 @@ const BlogSection = () => {
       <div className="blog-inner">
         <h2 className="blog-title">Blog</h2>
 
+        {/*Work In Progress Notice */}
+        <div className="blog-wip">
+          <h3 className="blog-wip-title">Work in Progress</h3>
+          <p className="blog-wip-text">
+            This blog is powered by a custom Go + SQLite backend deployed on AWS.
+            Frontend integration and routing are currently being finalized.
+          </p>
+          <p className="blog-wip-subtext">
+            Full post pages and dynamic navigation coming soon.
+          </p>
+        </div>
+
         <div className="blog-list">
           {loading && <p>Loading posts...</p>}
 
@@ -34,9 +44,7 @@ const BlogSection = () => {
               key={post.id}
               className={`blog-post delay-${index + 1} ${
                 isVisible ? "visible" : ""
-              }`}
-              onClick={() => navigate(`/blog/${post.slug}`)}
-              style={{ cursor: "pointer" }}
+              } blog-post-disabled`}
             >
               <div className="blog-post-header">
                 <h3 className="blog-post-title">{post.title}</h3>

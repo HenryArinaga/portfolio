@@ -375,6 +375,12 @@
   background: rgba(148, 163, 184, 0.15);
 }
 
+.blog-post-disabled {
+  cursor: default;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
 
 /* Footer Section */
 
