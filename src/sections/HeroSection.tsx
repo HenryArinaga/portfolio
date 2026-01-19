@@ -15,9 +15,9 @@ const HeroSection = () => {
         <div className="hero-name-divider"></div>
 
         <p className="hero-tagline">
-          Building backend systems, tools, and educational projects.
+          Building backend systems, tools, and educational projects.</p>
         <p> CSUB Computer Science Student </p>
-        </p>
+        
 
         <div className="hero-socials">
         <a href="https://github.com/henryarin" target="_blank" rel="noreferrer">GitHub</a>
