@@ -73,7 +73,9 @@ const BlogSection = () => {
 
         {!loading && (
           <div className="blog-view-all">
-            <Link to="/blog">View all blog posts →</Link>
+            <Link to="/blog" className="blog-view-all-button">
+              View all blog posts →
+            </Link>
           </div>
         )}
       </div>

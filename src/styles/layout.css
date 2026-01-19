@@ -9,14 +9,17 @@
   --border-subtle: rgba(148, 163, 184, 0.35);
 }
 
-
 /* App root */
 
 .App {
   min-height: 100vh;
   background: var(--bg-page);
   color: var(--text-main);
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
     sans-serif;
 }
 
@@ -53,13 +56,9 @@
   left: 0;
   width: 100%;
   height: min(100vh, 900px);
-  background-image: 
-    linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0) 65%,
-      var(--bg-page) 100%
-    ),
-    url('/images/header-bg.png');
+  background-image:
+    linear-gradient(to bottom, rgba(0, 0, 0, 0) 65%, var(--bg-page) 100%),
+    url("/images/header-bg.png");
   background-size: 100% auto;
   background-position: center top;
   background-repeat: no-repeat;
@@ -247,8 +246,8 @@
   font-size: 0.85rem;
   padding: 0.4rem 0.65rem;
   border-radius: 6px;
-  
-  background: rgba(148, 163, 184, 0.10);
+
+  background: rgba(148, 163, 184, 0.1);
   border: 1px solid rgba(148, 163, 184, 0.25);
 
   backdrop-filter: blur(3px);
@@ -257,7 +256,7 @@
   color: var(--text-main);
   letter-spacing: 0.015em;
 
-  transition: 
+  transition:
     background 200ms ease,
     border-color 200ms ease,
     transform 180ms ease,
@@ -265,13 +264,11 @@
 }
 
 .project-highlights li:hover {
-  background: rgba(56, 189, 248, 0.12); 
+  background: rgba(56, 189, 248, 0.12);
   border-color: rgba(56, 189, 248, 0.35);
   box-shadow: 0 0 8px rgba(56, 189, 248, 0.25);
   transform: translateY(-2px);
 }
-
-
 
 /* Blog Section */
 
@@ -302,7 +299,7 @@
   padding: 1.25rem 1.5rem;
   border-radius: 0.9rem;
   background: rgba(15, 23, 42, 0.8);
-  border: 1px solid rgba(56, 189, 248, 0.20);
+  border: 1px solid rgba(56, 189, 248, 0.2);
   box-shadow: 0 0 8px rgba(56, 189, 248, 0.15);
 
   opacity: 0;
@@ -310,7 +307,7 @@
 
   transition:
     opacity 600ms ease-out,
-    transform 600ms ease-out,
+    transform 0.2s ease,
     box-shadow 220ms ease,
     border-color 200ms ease,
     background 200ms ease;
@@ -321,9 +318,15 @@
   transform: translateY(0);
 }
 
-.delay-1 { transition-delay: 0.1s; }
-.delay-2 { transition-delay: 0.25s; }
-.delay-3 { transition-delay: 0.40s; }
+.delay-1 {
+  transition-delay: 0.1s;
+}
+.delay-2 {
+  transition-delay: 0.25s;
+}
+.delay-3 {
+  transition-delay: 0.4s;
+}
 
 .blog-post:hover {
   background: rgba(56, 189, 248, 0.12);
@@ -342,6 +345,7 @@
 
 .blog-post-title {
   font-size: 1.05rem;
+  font-weight: 500;
 }
 
 .blog-post-date {
@@ -388,12 +392,40 @@
   margin-bottom: 2rem;
 
   font-size: 1rem;
-  color: var(--text-primary);
+  color: var(--text-main);
   cursor: pointer;
 }
 
 .blog-back-button:hover {
   text-decoration: underline;
+}
+.blog-view-all {
+  display: flex;
+  justify-content: center;
+  margin-top: 2.5rem;
+}
+
+.blog-view-all-button {
+  display: inline-block;
+  padding: 0.75rem 1.75rem;
+  border-radius: 999px;
+
+  font-size: 0.95rem;
+  font-weight: 500;
+
+  text-decoration: none;
+  color: var(--text-primary);
+
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.02);
+
+  transition: background 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+}
+
+.blog-view-all-button:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-1px);
 }
 
 
@@ -402,12 +434,8 @@
 .footer {
   padding: 4rem 2rem 2.5rem;
   background-image:
-    linear-gradient(
-      to bottom,
-      var(--bg-page) 0%,
-      rgba(5, 8, 22, 0) 50%
-    ),
-    url('/images/footer-bg.png');
+    linear-gradient(to bottom, var(--bg-page) 0%, rgba(5, 8, 22, 0) 50%),
+    url("/images/footer-bg.png");
   background-size: cover;
   background-position: center bottom;
   background-repeat: no-repeat;
@@ -417,9 +445,10 @@
 
   opacity: 0;
   transform: translateY(40px);
-  transition: opacity 800ms ease-out, transform 800ms ease-out;
+  transition:
+    opacity 800ms ease-out,
+    transform 800ms ease-out;
 }
-
 
 .footer * {
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.75);
@@ -575,9 +604,6 @@
   margin-top: 0;
 }
 
-
-
-
 section {
   scroll-margin-top: 90px;
 }
@@ -613,4 +639,3 @@ section {
   position: relative;
   z-index: 2;
 }
-
