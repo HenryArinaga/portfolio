@@ -1,11 +1,13 @@
+// src/sections/BlogSection.tsx
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import useFadeInOnScroll from "../hooks/useFadeInOnScroll";
 import { fetchPosts } from "../services/blogApi";
 import type { BlogPost } from "../services/blogApi";
 
 const BlogSection = () => {
   const { ref, isVisible } = useFadeInOnScroll();
+  const location = useLocation();
 
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
@@ -15,6 +17,12 @@ const BlogSection = () => {
       .then(setPosts)
       .finally(() => setLoading(false));
   }, []);
+
+  useEffect(() => {
+    if (location.state?.scrollToBlog && ref.current) {
+      ref.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [location.state, ref]);
 
   return (
     <section
@@ -28,8 +36,8 @@ const BlogSection = () => {
         <div className="blog-wip">
           <h3 className="blog-wip-title">Work in Progress</h3>
           <p className="blog-wip-text">
-            This blog is powered by a custom Go + SQLite backend deployed on AWS.
-            Frontend integration and routing are currently being finalized.
+            This blog is powered by a custom Go + SQLite backend deployed on
+            AWS. Frontend integration and routing are currently being finalized.
           </p>
         </div>
 

@@ -381,6 +381,21 @@
   pointer-events: none;
 }
 
+.blog-back-button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin-bottom: 2rem;
+
+  font-size: 1rem;
+  color: var(--text-primary);
+  cursor: pointer;
+}
+
+.blog-back-button:hover {
+  text-decoration: underline;
+}
+
 
 /* Footer Section */
 
