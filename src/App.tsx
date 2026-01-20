@@ -7,13 +7,13 @@ import BlogSection from "./sections/BlogSection";
 import FooterSection from "./sections/FooterSection";
 import Navbar from "./components/Navbar";
 import StarTrail from "./components/StarTrail";
+
 import BlogIndex from "./pages/BlogIndex";
+import BlogPostPage from "./pages/BlogPost";
+import AdminNewPost from "./pages/AdminNewPost";
 
 import "./styles/layout.css";
 import "./styles/animations.css";
-
-// (we’ll create this in Step 2)
-import BlogPostPage from "./pages/BlogPost";
 
 function HomePage() {
   return (
@@ -42,12 +42,10 @@ function App() {
   return (
     <HashRouter>
       <Routes>
-        {/* one-page portfolio */}
         <Route path="/" element={<HomePage />} />
-
-        {/* blog post route  */}
         <Route path="/blog" element={<BlogIndex />} />
         <Route path="/blog/:slug" element={<BlogPostPage />} />
+        <Route path="/admin/new" element={<AdminNewPost />} />
       </Routes>
     </HashRouter>
   );
