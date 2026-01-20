@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { fetchPostBySlug } from "../services/blogApi";
 import type { BlogPost } from "../services/blogApi";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 const BlogPostPage = () => {
   const { slug } = useParams();
@@ -42,8 +44,11 @@ const BlogPostPage = () => {
       <p style={{ opacity: 0.7 }}>
         {new Date(post.created_at).toLocaleDateString()}
       </p>
-
-      <div style={{ marginTop: "2rem", lineHeight: 1.7 }}>{post.content}</div>
+      <div style={{ marginTop: "2rem" }} className="blog-post">
+        <ReactMarkdown remarkPlugins={[remarkGfm]}>
+          {post.content}
+        </ReactMarkdown>
+      </div>
     </article>
   );
 };

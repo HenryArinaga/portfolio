@@ -38,3 +38,23 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Blog Markdown styles */
+.blog-post h1,
+.blog-post h2,
+.blog-post h3 {
+  margin-top: 2rem;
+}
+
+.blog-post pre {
+  background: #0f172a;
+  color: #e5e7eb;
+  padding: 1rem;
+  border-radius: 8px;
+  overflow-x: auto;
+}
+
+.blog-post code {
+  background: #1e293b;
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+}
