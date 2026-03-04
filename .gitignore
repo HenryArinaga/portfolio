@@ -144,4 +144,7 @@ vite.config.ts.timestamp-*
 src/.DS_Store
 **/.DS_Store
 
+# Kiro AI assistant files
+.kiro/
+
 
