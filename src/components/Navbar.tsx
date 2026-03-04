@@ -13,15 +13,62 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
+    e.preventDefault();
+    const target = document.getElementById(targetId);
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
   return (
-    <nav className={`navbar ${scrolled ? "navbar-small" : ""}`}>
+    <nav className={`navbar ${scrolled ? "navbar-small" : ""}`} role="navigation" aria-label="Main navigation">
       <div className="navbar-inner">
-      <a href="#hero" className="navbar-logo">Henry Arinaga</a>
-        <div className="navbar-links">
-          <a href="#about" className={active === "about" ? "active" : ""}>About</a>
-          <a href="#projects" className={active === "projects" ? "active" : ""}>Projects</a>
-          <a href="#blog" className={active === "blog" ? "active" : ""}>Blog</a>
-          <a href="#contact" className={active === "contact" ? "active" : ""}>Contact</a>
+        <a 
+          href="#hero" 
+          className="navbar-logo"
+          onClick={(e) => handleSmoothScroll(e, "hero")}
+          aria-label="Henry Arinaga - Home"
+        >
+          Henry Arinaga
+        </a>
+        <div className="navbar-links" role="list">
+          <a 
+            href="#about" 
+            className={active === "about" ? "active" : ""}
+            onClick={(e) => handleSmoothScroll(e, "about")}
+            aria-current={active === "about" ? "page" : undefined}
+            role="listitem"
+          >
+            About
+          </a>
+          <a 
+            href="#projects" 
+            className={active === "projects" ? "active" : ""}
+            onClick={(e) => handleSmoothScroll(e, "projects")}
+            aria-current={active === "projects" ? "page" : undefined}
+            role="listitem"
+          >
+            Projects
+          </a>
+          <a 
+            href="#blog" 
+            className={active === "blog" ? "active" : ""}
+            onClick={(e) => handleSmoothScroll(e, "blog")}
+            aria-current={active === "blog" ? "page" : undefined}
+            role="listitem"
+          >
+            Blog
+          </a>
+          <a 
+            href="#contact" 
+            className={active === "contact" ? "active" : ""}
+            onClick={(e) => handleSmoothScroll(e, "contact")}
+            aria-current={active === "contact" ? "page" : undefined}
+            role="listitem"
+          >
+            Contact
+          </a>
         </div>
       </div>
     </nav>

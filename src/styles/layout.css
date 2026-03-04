@@ -831,6 +831,7 @@
   backdrop-filter: blur(8px);
   background: var(--color-bg-card);
   border-bottom: 1px solid var(--color-border-subtle);
+  transition: all 200ms ease;
 }
 
 .navbar-inner {
@@ -848,11 +849,23 @@
   color: var(--text-main);
   text-decoration: none;
   letter-spacing: 0.04em;
-  transition: color 200ms ease;
+  transition: color 200ms ease, transform 100ms ease;
+  display: inline-block;
 }
 
 .navbar-logo:hover {
   color: var(--accent-sky);
+  transform: translateY(-1px);
+}
+
+.navbar-logo:focus {
+  outline: 2px solid var(--accent-sky);
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
+.navbar-logo:active {
+  transform: translateY(0);
 }
 
 .navbar-links {
@@ -865,28 +878,47 @@
   text-decoration: none;
   font-size: 0.9rem;
   position: relative;
-  transition: color 200ms ease;
+  transition: color 100ms ease, transform 100ms ease;
+  display: inline-block;
+  padding: 0.25rem 0;
 }
 
 .navbar-links a:hover {
   color: var(--accent-sky);
+  transform: translateY(-1px);
+}
+
+.navbar-links a:focus {
+  outline: 2px solid var(--accent-sky);
+  outline-offset: 4px;
+  border-radius: 2px;
+  color: var(--accent-sky);
+}
+
+.navbar-links a:active {
+  transform: translateY(0);
 }
 
 .navbar-links a::after {
   content: "";
   position: absolute;
   left: 50%;
-  bottom: -6px;
+  bottom: -2px;
   width: 0%;
   height: 2px;
   background: var(--accent-sky);
   border-radius: 1px;
   opacity: 0;
   transform: translateX(-50%);
-  transition: all 300ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition: all 200ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .navbar-links a:hover::after {
+  width: 60%;
+  opacity: 0.5;
+}
+
+.navbar-links a:focus::after {
   width: 60%;
   opacity: 0.5;
 }
@@ -908,7 +940,27 @@
   .navbar-links {
     gap: 1rem;
   }
+  .navbar-links a {
+    font-size: 0.85rem;
+  }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .navbar,
+  .navbar-logo,
+  .navbar-links a,
+  .navbar-links a::after {
+    transition-duration: 0.01ms;
+  }
+  
+  .navbar-logo:hover,
+  .navbar-links a:hover,
+  .navbar-links a:active,
+  .navbar-logo:active {
+    transform: none;
+  }
+}
+
 
 .about-title,
 .projects-title,
