@@ -1,65 +1,395 @@
-.hero-enter {
+/**
+ * Animation System
+ * 
+ * This file defines keyframes, transition classes, and scroll-reveal utilities.
+ * All animations use GPU-accelerated properties (transform, opacity, filter).
+ * Respects prefers-reduced-motion for accessibility.
+ */
+
+/* ============================================
+   KEYFRAME ANIMATIONS
+   ============================================ */
+
+/* Fade In Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Slide Up Animation */
+@keyframes slideUp {
+  from {
     opacity: 0;
     transform: translateY(24px);
-    animation: heroFadeUp 800ms ease-out forwards;
-    animation-delay: 120ms;
   }
-  
-  @keyframes heroFadeUp {
-    from {
-      opacity: 0;
-      transform: translateY(24px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-
-  .fade-in-section {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 600ms ease-out, transform 600ms ease-out;
-  }
-  
-  .fade-in-section.is-visible {
+  to {
     opacity: 1;
     transform: translateY(0);
   }
-  
+}
 
-  .project-fade {
+/* Slide Down Animation */
+@keyframes slideDown {
+  from {
     opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 600ms ease-out, transform 600ms ease-out;
+    transform: translateY(-24px);
   }
-  
-  .project-fade.is-visible {
+  to {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* Slide In From Left */
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Slide In From Right */
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Scale In Animation */
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Hero Fade Up (Legacy - maintained for compatibility) */
+@keyframes heroFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================
+   SCROLL REVEAL UTILITIES
+   ============================================ */
+
+/* Base scroll reveal class - hidden by default */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: 
+    opacity var(--duration-slower, 600ms) var(--ease-out, ease-out),
+    transform var(--duration-slower, 600ms) var(--ease-out, ease-out);
+}
+
+/* Visible state - triggered by Intersection Observer */
+.scroll-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Scroll reveal variants */
+.scroll-reveal-fade {
+  opacity: 0;
+  transition: opacity var(--duration-slower, 600ms) var(--ease-out, ease-out);
+}
+
+.scroll-reveal-fade.is-visible {
+  opacity: 1;
+}
+
+.scroll-reveal-slide-up {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: 
+    opacity var(--duration-slower, 600ms) var(--ease-out, ease-out),
+    transform var(--duration-slower, 600ms) var(--ease-out, ease-out);
+}
+
+.scroll-reveal-slide-up.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scroll-reveal-scale {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: 
+    opacity var(--duration-slower, 600ms) var(--ease-out, ease-out),
+    transform var(--duration-slower, 600ms) var(--ease-out, ease-out);
+}
+
+.scroll-reveal-scale.is-visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ============================================
+   STAGGER DELAY UTILITIES
+   ============================================ */
+
+.stagger-delay-1 {
+  transition-delay: 0ms;
+}
+
+.stagger-delay-2 {
+  transition-delay: var(--stagger-delay, 100ms);
+}
+
+.stagger-delay-3 {
+  transition-delay: calc(var(--stagger-delay, 100ms) * 2);
+}
+
+.stagger-delay-4 {
+  transition-delay: calc(var(--stagger-delay, 100ms) * 3);
+}
+
+.stagger-delay-5 {
+  transition-delay: calc(var(--stagger-delay, 100ms) * 4);
+}
+
+.stagger-delay-6 {
+  transition-delay: calc(var(--stagger-delay, 100ms) * 5);
+}
+
+/* ============================================
+   HOVER AND MICRO-INTERACTION TRANSITIONS
+   ============================================ */
+
+/* Smooth hover transition base */
+.hover-transition {
+  transition: 
+    transform var(--duration-normal, 200ms) var(--ease-smooth, ease),
+    box-shadow var(--duration-normal, 200ms) var(--ease-smooth, ease);
+}
+
+/* Lift effect on hover */
+.hover-lift {
+  transition: 
+    transform var(--duration-normal, 200ms) var(--ease-smooth, ease),
+    box-shadow var(--duration-normal, 200ms) var(--ease-smooth, ease);
+}
+
+.hover-lift:hover,
+.hover-lift:focus-visible {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Scale effect on hover */
+.hover-scale {
+  transition: transform var(--duration-normal, 200ms) var(--ease-smooth, ease);
+}
+
+.hover-scale:hover,
+.hover-scale:focus-visible {
+  transform: scale(1.05);
+}
+
+/* Subtle scale effect */
+.hover-scale-subtle {
+  transition: transform var(--duration-normal, 200ms) var(--ease-smooth, ease);
+}
+
+.hover-scale-subtle:hover,
+.hover-scale-subtle:focus-visible {
+  transform: scale(1.02);
+}
+
+/* Glow effect on hover */
+.hover-glow {
+  transition: 
+    box-shadow var(--duration-normal, 200ms) var(--ease-smooth, ease),
+    border-color var(--duration-normal, 200ms) var(--ease-smooth, ease);
+}
+
+.hover-glow:hover,
+.hover-glow:focus-visible {
+  box-shadow: 0 0 0 3px var(--color-primary-light);
+  border-color: var(--color-primary);
+}
+
+/* Button press animation */
+.button-press {
+  transition: transform var(--duration-fast, 100ms) var(--ease-smooth, ease);
+}
+
+.button-press:active {
+  transform: scale(0.97);
+}
+
+/* Icon hover animation */
+.icon-hover {
+  transition: 
+    transform var(--duration-fast, 100ms) var(--ease-smooth, ease),
+    color var(--duration-fast, 100ms) var(--ease-smooth, ease);
+}
+
+.icon-hover:hover,
+.icon-hover:focus-visible {
+  transform: scale(1.1);
+  color: var(--color-primary);
+}
+
+/* Link underline animation */
+.link-underline {
+  position: relative;
+  text-decoration: none;
+}
+
+.link-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: currentColor;
+  transition: width var(--duration-normal, 200ms) var(--ease-smooth, ease);
+}
+
+.link-underline:hover::after,
+.link-underline:focus-visible::after {
+  width: 100%;
+}
+
+/* Color transition utility */
+.transition-colors {
+  transition: 
+    color var(--duration-fast, 100ms) var(--ease-smooth, ease),
+    background-color var(--duration-fast, 100ms) var(--ease-smooth, ease),
+    border-color var(--duration-fast, 100ms) var(--ease-smooth, ease);
+}
+
+/* ============================================
+   LEGACY CLASSES (Maintained for compatibility)
+   ============================================ */
+
+.hero-enter {
+  opacity: 0;
+  transform: translateY(24px);
+  animation: heroFadeUp 800ms ease-out forwards;
+  animation-delay: 120ms;
+}
+
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 600ms ease-out, transform 600ms ease-out;
+}
+
+.fade-in-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.project-fade {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 600ms ease-out, transform 600ms ease-out;
+}
+
+.project-fade.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.project-delay-1 {
+  transition-delay: 0s;
+}
+
+.project-delay-2 {
+  transition-delay: 0.12s;
+}
+
+.blog-post {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 600ms ease-out, transform 600ms ease-out;
+}
+
+.blog-post.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.blog-post.delay-1 { 
+  transition-delay: 0.1s; 
+}
+
+.blog-post.delay-2 { 
+  transition-delay: 0.25s; 
+}
+
+.blog-post.delay-3 { 
+  transition-delay: 0.4s; 
+}
+
+/* ============================================
+   ACCESSIBILITY - REDUCED MOTION SUPPORT
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  /* Disable all animations and transitions */
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
   
-  .project-delay-1 {
-    transition-delay: .0s;
-  }
-  .project-delay-2 {
-    transition-delay: 0.12s;
-  }
- 
+  /* Immediately show scroll-reveal elements */
+  .scroll-reveal,
+  .scroll-reveal-fade,
+  .scroll-reveal-slide-up,
+  .scroll-reveal-scale,
+  .fade-in-section,
+  .project-fade,
   .blog-post {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 600ms ease-out, transform 600ms ease-out;
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
   }
   
-  .blog-post.visible {
-    opacity: 1;
-    transform: translateY(0);
+  /* Remove stagger delays */
+  .stagger-delay-1,
+  .stagger-delay-2,
+  .stagger-delay-3,
+  .stagger-delay-4,
+  .stagger-delay-5,
+  .stagger-delay-6,
+  .project-delay-1,
+  .project-delay-2,
+  .blog-post.delay-1,
+  .blog-post.delay-2,
+  .blog-post.delay-3 {
+    transition-delay: 0ms !important;
   }
-  
-  .blog-post.delay-1 { transition-delay: 0.1s; }
-  .blog-post.delay-2 { transition-delay: 0.25s; }
-  .blog-post.delay-3 { transition-delay: 0.4s; }
+}
   
   
