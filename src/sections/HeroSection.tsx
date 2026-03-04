@@ -1,4 +1,4 @@
-import profileImg from "../assets/profile.jpg";
+import profileImg from "../assets/mining.png";
 import { useReducedMotion } from "../hooks/useReducedMotion";
 
 const HeroSection = () => {

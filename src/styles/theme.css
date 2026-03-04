@@ -256,9 +256,23 @@
   --body-small: var(--text-sm);
   --body-tiny: var(--text-xs);
   
+  /* Font Size Aliases (for compatibility) */
+  --font-size-xs: var(--text-xs);
+  --font-size-sm: var(--text-sm);
+  --font-size-base: var(--text-base);
+  --font-size-lg: var(--text-lg);
+  --font-size-xl: var(--text-xl);
+  --font-size-2xl: var(--text-2xl);
+  --font-size-3xl: var(--text-3xl);
+  --font-size-4xl: var(--text-4xl);
+  --font-size-5xl: var(--text-5xl);
+  --font-size-6xl: var(--text-6xl);
+  --font-size-7xl: var(--text-7xl);
+  
   /* Line Heights for Context */
   --line-height-heading: var(--leading-tight);
   --line-height-body: var(--leading-relaxed);
+  --line-height-relaxed: var(--leading-relaxed);
   
   /* ============================================
      SEMANTIC TOKENS - Shadows
