@@ -1,6 +1,6 @@
 // src/sections/BlogSection.tsx
 import { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { fetchPosts } from "../services/blogApi";
 import type { BlogPost } from "../services/blogApi";
 import { BlogCard } from "../components/BlogCard";
@@ -72,12 +72,14 @@ const BlogSection = () => {
                   title={post.title}
                   date={post.created_at}
                   preview={
-                    post.content.length > 140
+                    post.excerpt || 
+                    (post.content.length > 140
                       ? `${post.content.slice(0, 140)}…`
-                      : post.content
+                      : post.content)
                   }
                   slug={post.slug}
                   readTime={calculateReadTime(post.content)}
+                  imageUrl={post.image_url}
                 />
               </ScrollReveal>
             ))}
@@ -87,9 +89,14 @@ const BlogSection = () => {
         {!loading && posts.length > 0 && (
           <ScrollReveal delay={200} threshold={0.2}>
             <div className="blog-view-all">
-              <Link to="/blog" className="blog-view-all-button">
+              <a 
+                href={`${import.meta.env.VITE_API_URL || 'http://localhost:8080'}/blog`}
+                className="blog-view-all-button"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 View all blog posts →
-              </Link>
+              </a>
             </div>
           </ScrollReveal>
         )}

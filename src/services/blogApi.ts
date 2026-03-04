@@ -1,22 +1,23 @@
-const API_BASE = import.meta.env.VITE_API_BASE;
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8080';
 
 const ADMIN_HEADERS = {
   "Content-Type": "application/json",
   Authorization: `Bearer ${import.meta.env.VITE_ADMIN_TOKEN}`,
 };
 
-
-export type BlogPost = {
+export interface BlogPost {
   id: number;
   title: string;
   slug: string;
   content: string;
+  excerpt: string;
+  image_url: string;
   created_at: string;
   published: boolean;
-};
+}
 
 export async function fetchPosts(): Promise<BlogPost[]> {
-  const res = await fetch(`${API_BASE}/api/posts`);
+  const res = await fetch(`${API_BASE_URL}/api/posts`);
   if (!res.ok) {
     throw new Error("Failed to fetch posts");
   }
@@ -24,15 +25,28 @@ export async function fetchPosts(): Promise<BlogPost[]> {
 }
 
 export async function fetchPostBySlug(slug: string): Promise<BlogPost> {
-  const res = await fetch(`${API_BASE}/api/posts/${slug}`);
+  const res = await fetch(`${API_BASE_URL}/api/posts/${slug}`);
   if (!res.ok) {
     throw new Error("Post not found");
   }
   return res.json();
 }
 
+export async function fetchPostPreviews(): Promise<BlogPost[]> {
+  const res = await fetch(`${API_BASE_URL}/api/posts/previews`);
+  if (!res.ok) {
+    throw new Error("Failed to fetch previews");
+  }
+  return res.json();
+}
+
+export function getImageUrl(imageUrl: string): string {
+  if (!imageUrl) return '';
+  return imageUrl.startsWith('http') ? imageUrl : `${API_BASE_URL}${imageUrl}`;
+}
+
 export async function fetchAdminPosts(): Promise<BlogPost[]> {
-  const res = await fetch(`${API_BASE}/api/admin/posts`, {
+  const res = await fetch(`${API_BASE_URL}/api/admin/posts`, {
     headers: ADMIN_HEADERS,
   });
 
@@ -48,7 +62,7 @@ export async function createAdminPost(data: {
   content: string;
   published: boolean;
 }) {
-  const res = await fetch(`${API_BASE}/api/admin/posts`, {
+  const res = await fetch(`${API_BASE_URL}/api/admin/posts`, {
     method: "POST",
     headers: ADMIN_HEADERS,
     body: JSON.stringify(data),
@@ -67,7 +81,7 @@ export async function updateAdminPost(
     published: boolean;
   }
 ) {
-  const res = await fetch(`${API_BASE}/api/admin/posts/${id}`, {
+  const res = await fetch(`${API_BASE_URL}/api/admin/posts/${id}`, {
     method: "PUT",
     headers: ADMIN_HEADERS,
     body: JSON.stringify(data),
