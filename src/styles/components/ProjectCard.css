@@ -17,9 +17,53 @@
 
 .project-card__image-container {
   width: 100%;
-  height: 200px;
+  height: 280px;
   overflow: hidden;
-  background: var(--color-background-section);
+  background: linear-gradient(135deg, var(--color-background-section) 0%, var(--color-background-page) 100%);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.project-card__image-container::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.1) 100%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 200ms var(--easing-smooth);
+}
+
+.project-card:hover .project-card__image-container::after,
+.project-card:focus-within .project-card__image-container::after {
+  opacity: 1;
+}
+
+.project-card__placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  color: var(--color-text-muted);
+  gap: 1rem;
+}
+
+.project-card__placeholder-icon {
+  width: 64px;
+  height: 64px;
+  opacity: 0.3;
+}
+
+.project-card__placeholder-text {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  opacity: 0.5;
+  text-align: center;
+  padding: 0 1rem;
 }
 
 .project-card__image {
@@ -141,5 +185,18 @@
   .project-card:hover,
   .project-card:focus-within {
     transform: none;
+  }
+}
+
+/* Responsive image heights for better gallery feel */
+@media (min-width: 768px) {
+  .project-card__image-container {
+    height: 300px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .project-card__image-container {
+    height: 320px;
   }
 }
