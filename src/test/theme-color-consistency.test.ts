@@ -15,8 +15,6 @@ import * as fs from 'fs';
 import * as path from 'path';
 
 describe('Property 18: Theme Color Consistency', () => {
-  let dom: JSDOM;
-  let document: Document;
   let styleSheets: string[];
 
   beforeAll(() => {
@@ -24,7 +22,7 @@ describe('Property 18: Theme Color Consistency', () => {
     const stylesDir = path.join(process.cwd(), 'src', 'styles');
     const cssFiles = fs.readdirSync(stylesDir).filter(file => file.endsWith('.css'));
     
-    styleSheets = cssFiles.map(file => {
+    styleSheets = cssFiles.map((file: string) => {
       const filePath = path.join(stylesDir, file);
       return fs.readFileSync(filePath, 'utf-8');
     });
@@ -42,8 +40,7 @@ describe('Property 18: Theme Color Consistency', () => {
       </html>
     `;
     
-    dom = new JSDOM(html);
-    document = dom.window.document;
+    new JSDOM(html);
   });
 
   /**
@@ -157,7 +154,7 @@ describe('Property 18: Theme Color Consistency', () => {
     const stylesDir = path.join(process.cwd(), 'src', 'styles');
     const cssFiles = fs.readdirSync(stylesDir).filter(file => file.endsWith('.css'));
 
-    cssFiles.forEach(file => {
+    cssFiles.forEach((file: string) => {
       const filePath = path.join(stylesDir, file);
       const cssContent = fs.readFileSync(filePath, 'utf-8');
       const colorProps = extractColorPropertiesFromCSS(cssContent);
@@ -276,18 +273,18 @@ describe('Property 18: Theme Color Consistency', () => {
 
     const violations: Array<{ file: string; issue: string }> = [];
 
-    cssFiles.forEach(file => {
+    cssFiles.forEach((file: string) => {
       const filePath = path.join(stylesDir, file);
       const cssContent = fs.readFileSync(filePath, 'utf-8');
 
       // Check for common hardcoded color patterns
       const hexColorMatches = cssContent.match(/#[0-9a-fA-F]{3,8}/g);
-      const rgbMatches = cssContent.match(/rgba?\(\s*\d+\s*,\s*\d+\s*,\s*\d+/g);
+      const rgbMatches = cssContent.match(/rgba?\([^)]+\)/g);
       const hslMatches = cssContent.match(/hsla?\(/g);
 
       if (hexColorMatches) {
         // Filter out colors in comments
-        const nonCommentHex = hexColorMatches.filter(hex => {
+        const nonCommentHex = hexColorMatches.filter((hex: string) => {
           const index = cssContent.indexOf(hex);
           const beforeHex = cssContent.substring(Math.max(0, index - 50), index);
           return !beforeHex.includes('/*') || beforeHex.lastIndexOf('*/') > beforeHex.lastIndexOf('/*');
@@ -303,7 +300,22 @@ describe('Property 18: Theme Color Consistency', () => {
 
       if (rgbMatches && rgbMatches.length > 0) {
         // Filter out rgba with 0 alpha (transparent)
-        const nonTransparentRgb = rgbMatches.filter(rgb => !rgb.match(/,\s*0\s*$/));
+        // Also filter out black (0,0,0) and white (255,255,255) used for shadows/overlays
+        const nonTransparentRgb = rgbMatches.filter((rgb: string) => {
+          // Allow rgba(0, 0, 0, ...) for shadows
+          if (rgb.match(/rgba?\(\s*0\s*,\s*0\s*,\s*0/)) {
+            return false;
+          }
+          // Allow rgba(255, 255, 255, ...) for white overlays
+          if (rgb.match(/rgba?\(\s*255\s*,\s*255\s*,\s*255/)) {
+            return false;
+          }
+          // Filter out rgba with 0 alpha (fully transparent) - check for ", 0)" at the end
+          if (rgb.match(/,\s*0\s*\)?$/)) {
+            return false;
+          }
+          return true;
+        });
         if (nonTransparentRgb.length > 0) {
           violations.push({
             file,

@@ -96,17 +96,17 @@
   --font-mono: 'Fira Code', 'Courier New', monospace;
   
   /* Font Sizes - Modular Scale (1.25 ratio) */
-  --text-xs: 0.75rem;      /* 12px */
-  --text-sm: 0.875rem;     /* 14px */
-  --text-base: 1rem;       /* 16px */
-  --text-lg: 1.125rem;     /* 18px */
-  --text-xl: 1.25rem;      /* 20px */
-  --text-2xl: 1.5rem;      /* 24px */
-  --text-3xl: 1.875rem;    /* 30px */
-  --text-4xl: 2.25rem;     /* 36px */
-  --text-5xl: 3rem;        /* 48px */
-  --text-6xl: 3.75rem;     /* 60px */
-  --text-7xl: 4.5rem;      /* 72px */
+  --text-xs: 0.64rem;      /* 10.24px - base / 1.25^2 */
+  --text-sm: 0.8rem;       /* 12.8px - base / 1.25 */
+  --text-base: 1rem;       /* 16px - base */
+  --text-lg: 1.25rem;      /* 20px - base * 1.25 */
+  --text-xl: 1.5625rem;    /* 25px - base * 1.25^2 */
+  --text-2xl: 1.953rem;    /* 31.25px - base * 1.25^3 */
+  --text-3xl: 2.441rem;    /* 39.06px - base * 1.25^4 */
+  --text-4xl: 3.052rem;    /* 48.83px - base * 1.25^5 */
+  --text-5xl: 3.815rem;    /* 61.04px - base * 1.25^6 */
+  --text-6xl: 4.768rem;    /* 76.29px - base * 1.25^7 */
+  --text-7xl: 5.96rem;     /* 95.37px - base * 1.25^8 */
   
   /* Line Heights */
   --leading-tight: 1.25;
@@ -190,7 +190,7 @@
   
   /* Text Colors */
   --color-text-primary: #e5e7eb;
-  --color-text-secondary: var(--gray-700);
+  --color-text-secondary: #d1d5db;
   --color-text-muted: #9ca3af;
   --color-text-inverse: #ffffff;
   --color-text-link: #8ab4ff;
