@@ -166,6 +166,7 @@
   --color-primary: var(--blue-600);
   --color-primary-hover: var(--blue-700);
   --color-primary-active: var(--blue-800);
+  --color-primary-alpha: rgba(59, 130, 246, 0.5);
   --color-primary-light: var(--blue-100);
   
   /* Secondary Colors */

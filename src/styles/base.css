@@ -135,7 +135,7 @@ body {
 a {
   color: var(--color-text-link);
   text-decoration: none;
-  transition: color var(--duration-fast) var(--ease-default);
+  transition: color 100ms var(--ease-default);
 }
 
 a:hover {
@@ -157,6 +157,46 @@ a:focus-visible {
   outline: 2px solid var(--color-border-focus);
   outline-offset: 2px;
   border-radius: var(--radius-sm);
+}
+
+/* ============================================
+   BUTTON STYLES
+   ============================================ */
+
+button {
+  cursor: pointer;
+  transition: opacity 100ms var(--ease-default), 
+              transform 100ms var(--ease-default);
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+button:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+}
+
+/* Generic button classes */
+.btn,
+.cta-button,
+.nav-link {
+  transition: opacity 100ms var(--ease-default), 
+              transform 100ms var(--ease-default),
+              color 100ms var(--ease-default);
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+.cta-button:hover {
+  opacity: 0.9;
+}
+
+.nav-link:hover {
+  opacity: 0.9;
 }
 
 /* ============================================

@@ -67,13 +67,21 @@ const HeroSection = () => {
         </div>
 
         {/* Animated scroll indicator with staggered animation */}
-        <div 
+        <a
+          href="#about"
           className={`hero-scroll-indicator ${!prefersReducedMotion ? 'hero-stagger-6' : ''}`}
-          aria-label="Scroll down to view more content"
+          aria-label="Scroll down to About section"
+          onClick={(e) => {
+            e.preventDefault();
+            const target = document.getElementById('about');
+            if (target) {
+              target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+          }}
         >
           <span className="hero-scroll-text">Scroll</span>
-          <span className="hero-scroll-arrow">↓</span>
-        </div>
+          <span className="hero-scroll-arrow" aria-hidden="true">↓</span>
+        </a>
       </div>
     </section>
   );

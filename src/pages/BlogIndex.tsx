@@ -19,26 +19,30 @@ export default function BlogIndex() {
 
   return (
     <div className="blog-index">
-      <h1>Blog</h1>
+      <header>
+        <h1>Blog</h1>
+      </header>
 
-      <ul className="blog-index-list">
-        {posts.map((post) => (
-          <li key={post.id} className="blog-index-item">
-            <Link to={`/blog/${post.slug}`} className="blog-index-link">
-              {post.title}
-            </Link>
-            <span className="blog-index-date">
-              {new Date(post.created_at).toLocaleDateString()}
-            </span>
-          </li>
-        ))}
-      </ul>
+      <nav aria-label="Blog posts">
+        <ul className="blog-index-list">
+          {posts.map((post) => (
+            <li key={post.id} className="blog-index-item">
+              <Link to={`/blog/${post.slug}`} className="blog-index-link">
+                {post.title}
+              </Link>
+              <time className="blog-index-date" dateTime={post.created_at}>
+                {new Date(post.created_at).toLocaleDateString()}
+              </time>
+            </li>
+          ))}
+        </ul>
+      </nav>
 
-      <div className="blog-index-footer">
-        <Link to="/" className="blog-home-link">
+      <footer className="blog-index-footer">
+        <Link to="/" className="blog-home-link" aria-label="Return to home page">
           ← Back to home
         </Link>
-      </div>
+      </footer>
     </div>
   );
 }

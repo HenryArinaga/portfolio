@@ -20,14 +20,16 @@ function HomePage() {
     <div className="App">
       <StarTrail />
       <Navbar />
-      <HeroSection />
-      <div className="section-elevation" />
-      <AboutSection />
-      <div className="section-elevation" />
-      <ProjectsSection />
-      <div className="section-elevation" />
-      <BlogSection />
-      <div className="section-elevation" />
+      <main id="main-content">
+        <HeroSection />
+        <div className="section-elevation" />
+        <AboutSection />
+        <div className="section-elevation" />
+        <ProjectsSection />
+        <div className="section-elevation" />
+        <BlogSection />
+        <div className="section-elevation" />
+      </main>
       <FooterSection />
     </div>
   );

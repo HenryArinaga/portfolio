@@ -171,6 +171,8 @@ const StarTrail = () => {
     <canvas 
       ref={canvasRef} 
       className="star-trail-canvas"
+      aria-hidden="true"
+      role="presentation"
       style={{
         position: 'fixed',
         top: 0,

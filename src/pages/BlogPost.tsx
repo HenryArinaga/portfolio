@@ -35,6 +35,7 @@ const BlogPostPage = () => {
       <button
         onClick={() => navigate("/", { state: { scrollToBlog: true } })}
         className="blog-back-button"
+        aria-label="Go back to blog section"
       >
         ← Back to blog
       </button>
