@@ -295,6 +295,58 @@
   animation-delay: 120ms;
 }
 
+/* ============================================
+   HERO SECTION STAGGERED ANIMATIONS
+   ============================================ */
+
+/* Base animation for all hero staggered elements */
+.hero-stagger-1,
+.hero-stagger-2,
+.hero-stagger-3,
+.hero-stagger-4,
+.hero-stagger-5,
+.hero-stagger-6 {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: heroStaggerFadeUp 600ms var(--ease-smooth) forwards;
+}
+
+/* Staggered delays: 100-150ms between each element */
+.hero-stagger-1 {
+  animation-delay: 100ms;
+}
+
+.hero-stagger-2 {
+  animation-delay: 250ms; /* 100ms + 150ms */
+}
+
+.hero-stagger-3 {
+  animation-delay: 400ms; /* 250ms + 150ms */
+}
+
+.hero-stagger-4 {
+  animation-delay: 550ms; /* 400ms + 150ms */
+}
+
+.hero-stagger-5 {
+  animation-delay: 700ms; /* 550ms + 150ms */
+}
+
+.hero-stagger-6 {
+  animation-delay: 850ms; /* 700ms + 150ms */
+}
+
+@keyframes heroStaggerFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .fade-in-section {
   opacity: 0;
   transform: translateY(20px);
@@ -374,6 +426,23 @@
     opacity: 1 !important;
     transform: none !important;
     transition: none !important;
+  }
+  
+  /* Immediately show hero staggered elements */
+  .hero-stagger-1,
+  .hero-stagger-2,
+  .hero-stagger-3,
+  .hero-stagger-4,
+  .hero-stagger-5,
+  .hero-stagger-6 {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
+  
+  /* Disable scroll indicator bounce animation */
+  .hero-scroll-arrow {
+    animation: none !important;
   }
   
   /* Remove stagger delays */
