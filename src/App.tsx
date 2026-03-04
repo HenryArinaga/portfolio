@@ -15,6 +15,7 @@ import AdminDashboard from "./pages/AdminDashboard";
 
 import "./styles/layout.css";
 import "./styles/animations.css";
+import "./styles/utilities.css";
 
 function HomePage() {
   return (

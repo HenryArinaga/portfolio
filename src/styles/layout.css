@@ -1,13 +1,83 @@
+/* Legacy color variables - now using theme.css variables */
 :root {
-  --bg-page: #0a1023;
-  --bg-card: rgba(5, 8, 22, 0.25);
-  --text-main: #e5e7eb;
-  --text-muted: #9ca3af;
-  --accent-blue: #8ab4ff;
-  --accent-sky: #38bdf8;
-  --accent-indigo: #818cf8;
-  --border-subtle: rgba(148, 163, 184, 0.35);
+  /* Map old variables to new theme system for backward compatibility */
+  --bg-page: var(--color-bg-page);
+  --bg-card: var(--color-bg-card);
+  --text-main: var(--color-text-primary);
+  --text-muted: var(--color-text-muted);
+  --accent-blue: var(--color-primary);
+  --accent-sky: var(--color-accent);
+  --accent-indigo: var(--color-secondary);
+  --border-subtle: var(--color-border-subtle);
+  --bg-section: var(--color-bg-section);
 }
+
+/* ============================================
+   RESPONSIVE LAYOUT SYSTEM
+   ============================================ */
+
+/* Container System - Requirements 6.4 */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+/* Section Spacing - Requirements 1.2, 6.5 */
+.section-spacing {
+  padding-top: clamp(40px, 8vw, 80px);
+  padding-bottom: clamp(40px, 8vw, 80px);
+}
+
+/* Responsive Grid System for Projects - Requirements 6.1 */
+.projects-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .projects-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+  }
+}
+
+/* Responsive Grid System for Blog - Requirements 6.2 */
+.blog-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .blog-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+}
+
+/* Breakpoint Definitions - Requirements 6.3 */
+/* Mobile: < 768px */
+/* Tablet: 768px - 1023px */
+/* Desktop: >= 1024px */
 
 /* App root */
 
