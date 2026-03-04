@@ -200,7 +200,7 @@ describe('Property 17: Fluid Spacing Implementation', () => {
     fc.assert(
       fc.property(
         fc.integer({ min: 320, max: 2560 }), // viewport width range
-        (viewportWidth) => {
+        (_viewportWidth) => {
           const layoutCSS = fs.readFileSync(
             path.join(process.cwd(), 'src', 'styles', 'layout.css'),
             'utf-8'
@@ -216,7 +216,7 @@ describe('Property 17: Fluid Spacing Implementation', () => {
 
             if (paddingMatch) {
               const clampContent = paddingMatch[1];
-              const [minValue, preferredValue, maxValue] = clampContent.split(',').map(p => p.trim());
+              const [minValue, _preferredValue, maxValue] = clampContent.split(',').map(p => p.trim());
 
               // Parse values (simplified - assumes px units)
               const parseValue = (val: string): number => {

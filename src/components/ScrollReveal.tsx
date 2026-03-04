@@ -66,7 +66,7 @@ export const ScrollReveal: React.FC<ScrollRevealProps> = ({
   once = true,
   variant = 'slide-up',
 }) => {
-  const { ref, isVisible } = useScrollReveal({ threshold, once });
+  const { ref, isVisible } = useScrollReveal<HTMLDivElement>({ threshold, once });
   const prefersReducedMotion = useReducedMotion();
 
   // Determine animation class based on variant

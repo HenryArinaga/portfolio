@@ -19,10 +19,6 @@ import * as fs from 'fs';
 import * as path from 'path';
 
 describe('Property 15: Projects Grid Responsive Columns', () => {
-  let dom: JSDOM;
-  let document: Document;
-  let window: Window & typeof globalThis;
-
   beforeAll(() => {
     // Load layout CSS
     const layoutCSS = fs.readFileSync(
@@ -47,34 +43,8 @@ describe('Property 15: Projects Grid Responsive Columns', () => {
       </html>
     `;
     
-    dom = new JSDOM(html);
-    document = dom.window.document;
-    window = dom.window as Window & typeof globalThis;
+    new JSDOM(html);
   });
-
-  /**
-   * Helper function to get computed grid column count
-   */
-  function getGridColumnCount(element: HTMLElement, viewportWidth: number): number {
-    // Set viewport width
-    Object.defineProperty(window, 'innerWidth', {
-      writable: true,
-      configurable: true,
-      value: viewportWidth,
-    });
-
-    const computedStyle = window.getComputedStyle(element);
-    const gridTemplateColumns = computedStyle.gridTemplateColumns;
-
-    // Count the number of columns by splitting the grid-template-columns value
-    // e.g., "1fr" = 1 column, "1fr 1fr" = 2 columns, "1fr 1fr 1fr" = 3 columns
-    if (!gridTemplateColumns || gridTemplateColumns === 'none') {
-      return 1;
-    }
-
-    const columns = gridTemplateColumns.split(' ').filter(col => col.trim() !== '');
-    return columns.length;
-  }
 
   /**
    * Helper function to extract grid column count from CSS rules
@@ -264,10 +234,6 @@ describe('Property 15: Projects Grid Responsive Columns', () => {
 });
 
 describe('Property 16: Blog Grid Responsive Columns', () => {
-  let dom: JSDOM;
-  let document: Document;
-  let window: Window & typeof globalThis;
-
   beforeAll(() => {
     // Load layout CSS
     const layoutCSS = fs.readFileSync(
@@ -291,9 +257,7 @@ describe('Property 16: Blog Grid Responsive Columns', () => {
       </html>
     `;
     
-    dom = new JSDOM(html);
-    document = dom.window.document;
-    window = dom.window as Window & typeof globalThis;
+    new JSDOM(html);
   });
 
   /**

@@ -16,8 +16,6 @@ import * as fs from 'fs';
 import * as path from 'path';
 
 describe('Property 2: Color Contrast Compliance', () => {
-  let dom: JSDOM;
-  let document: Document;
   let styleSheets: string[];
 
   beforeAll(() => {
@@ -43,8 +41,7 @@ describe('Property 2: Color Contrast Compliance', () => {
       </html>
     `;
     
-    dom = new JSDOM(html);
-    document = dom.window.document;
+    new JSDOM(html);
   });
 
   /**
@@ -450,7 +447,7 @@ describe('Property 2: Color Contrast Compliance', () => {
         fc.integer({ min: 0, max: textColors.length - 1 }),
         fc.integer({ min: 0, max: bgColors.length - 1 }),
         fc.integer({ min: 12, max: 24 }), // font size in px
-        fc.integer({ min: 400, max: 700, step: 100 }), // font weight
+        fc.constantFrom(400, 500, 600, 700), // font weight
         (textIndex, bgIndex, fontSize, fontWeight) => {
           const textColor = textColors[textIndex].value;
           const bgColor = bgColors[bgIndex].value;

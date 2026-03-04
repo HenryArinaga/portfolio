@@ -122,27 +122,6 @@ describe('Property 4 & 5: Line Height Ranges', () => {
   }
 
   /**
-   * Helper function to check if an element is a heading element
-   */
-  function isHeadingElement(element: HTMLElement): boolean {
-    const headingTags = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
-    const tagName = element.tagName.toLowerCase();
-    
-    // Check if it's a heading tag
-    if (headingTags.includes(tagName)) {
-      return true;
-    }
-    
-    // Check if it has heading classes
-    const className = element.className || '';
-    if (className.match(/text-h[1-6]|heading/)) {
-      return true;
-    }
-    
-    return false;
-  }
-
-  /**
    * Helper function to extract line-height rules from CSS
    */
   function extractLineHeightRulesFromCSS(cssContent: string): Array<{

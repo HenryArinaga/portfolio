@@ -14,7 +14,7 @@ import { useScrollReveal } from '../hooks/useScrollReveal';
  */
 export const AnimationSystemExample: React.FC = () => {
   const prefersReducedMotion = useReducedMotion();
-  const { ref, isVisible } = useScrollReveal({ threshold: 0.3 });
+  const { ref, isVisible } = useScrollReveal<HTMLDivElement>({ threshold: 0.3 });
 
   return (
     <div style={{ padding: '2rem' }}>

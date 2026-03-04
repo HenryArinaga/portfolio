@@ -30,7 +30,7 @@ export interface UseScrollRevealReturn<T extends HTMLElement = HTMLElement> {
   /**
    * Ref to attach to the element to observe
    */
-  ref: React.RefObject<T>;
+  ref: React.RefObject<T | null>;
   
   /**
    * Whether the element is currently visible
