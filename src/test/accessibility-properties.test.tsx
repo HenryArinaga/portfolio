@@ -12,10 +12,8 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 import { render } from '@testing-library/react';
 import fc from 'fast-check';
-import { JSDOM } from 'jsdom';
 import * as fs from 'fs';
 import * as path from 'path';
-import React from 'react';
 import App from '../App';
 
 describe('Property 26: Interactive Element Focusability', () => {
@@ -474,17 +472,10 @@ describe('Property 28: Visible Focus Indicators', () => {
           element.focus();
           
           // Get computed styles
-          const styles = window.getComputedStyle(element);
-          
-          // Check for focus indicators
-          const hasOutline = styles.outline !== 'none' && styles.outline !== '';
-          const hasBoxShadow = styles.boxShadow !== 'none';
-          const hasBorder = styles.border !== 'none' && styles.borderWidth !== '0px';
-          
           // Element should have at least one focus indicator
           // Note: This is a basic check; actual focus styles might be applied via :focus pseudo-class
           // which we can't easily test in JSDOM
-          const hasFocusIndicator = hasOutline || hasBoxShadow || hasBorder;
+          // Focus indicators would typically include outline, box-shadow, or border changes
 
           // For this test, we'll just verify the element is focusable
           // The CSS-based test above checks for :focus styles in stylesheets

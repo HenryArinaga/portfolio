@@ -259,7 +259,7 @@ describe('Property 7: Hero Section Minimum Height', () => {
     fc.assert(
       fc.property(
         fc.integer({ min: 1024, max: 2560 }), // Desktop viewport widths
-        (viewportWidth) => {
+        (_viewportWidth) => {
           // Extract min-height for .hero in default (desktop) context
           const minHeight = extractMinHeight(layoutCSS, '.hero');
           
@@ -289,7 +289,7 @@ describe('Property 7: Hero Section Minimum Height', () => {
     fc.assert(
       fc.property(
         fc.integer({ min: 320, max: 767 }), // Mobile viewport widths
-        (viewportWidth) => {
+        (_viewportWidth) => {
           // Extract min-height for .hero in mobile media query
           const minHeight = extractMinHeight(
             layoutCSS,

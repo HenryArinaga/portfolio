@@ -25,14 +25,12 @@ describe('Property 25: Layout Shift Prevention', () => {
   let projectCardCSS: string;
   let blogCardComponent: string;
   let aboutSectionComponent: string;
-  let heroSectionComponent: string;
 
   beforeAll(() => {
     const projectCardPath = path.join(process.cwd(), 'src', 'components', 'ProjectCard.tsx');
     const projectCardCSSPath = path.join(process.cwd(), 'src', 'styles', 'components', 'ProjectCard.css');
     const blogCardPath = path.join(process.cwd(), 'src', 'components', 'BlogCard.tsx');
     const aboutSectionPath = path.join(process.cwd(), 'src', 'sections', 'AboutSection.tsx');
-    const heroSectionPath = path.join(process.cwd(), 'src', 'sections', 'HeroSection.tsx');
 
     projectCardComponent = fs.existsSync(projectCardPath) 
       ? fs.readFileSync(projectCardPath, 'utf-8') 
@@ -45,9 +43,6 @@ describe('Property 25: Layout Shift Prevention', () => {
       : '';
     aboutSectionComponent = fs.existsSync(aboutSectionPath) 
       ? fs.readFileSync(aboutSectionPath, 'utf-8') 
-      : '';
-    heroSectionComponent = fs.existsSync(heroSectionPath) 
-      ? fs.readFileSync(heroSectionPath, 'utf-8') 
       : '';
   });
 
@@ -332,7 +327,7 @@ describe('Property 25: Layout Shift Prevention', () => {
     fc.assert(
       fc.property(
         fc.constantFrom(...componentsWithImages),
-        ({ name, source }) => {
+        ({ source }) => {
           const imageTags = extractImageTags(source);
           
           // All images should have dimension strategy

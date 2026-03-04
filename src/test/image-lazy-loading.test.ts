@@ -23,13 +23,11 @@ describe('Property 24: Image Lazy Loading', () => {
 
   let projectCardComponent: string;
   let blogCardComponent: string;
-  let aboutSectionComponent: string;
   let projectsSectionComponent: string;
 
   beforeAll(() => {
     const projectCardPath = path.join(process.cwd(), 'src', 'components', 'ProjectCard.tsx');
     const blogCardPath = path.join(process.cwd(), 'src', 'components', 'BlogCard.tsx');
-    const aboutSectionPath = path.join(process.cwd(), 'src', 'sections', 'AboutSection.tsx');
     const projectsSectionPath = path.join(process.cwd(), 'src', 'sections', 'ProjectsSection.tsx');
 
     projectCardComponent = fs.existsSync(projectCardPath) 
@@ -37,9 +35,6 @@ describe('Property 24: Image Lazy Loading', () => {
       : '';
     blogCardComponent = fs.existsSync(blogCardPath) 
       ? fs.readFileSync(blogCardPath, 'utf-8') 
-      : '';
-    aboutSectionComponent = fs.existsSync(aboutSectionPath) 
-      ? fs.readFileSync(aboutSectionPath, 'utf-8') 
       : '';
     projectsSectionComponent = fs.existsSync(projectsSectionPath) 
       ? fs.readFileSync(projectsSectionPath, 'utf-8') 
