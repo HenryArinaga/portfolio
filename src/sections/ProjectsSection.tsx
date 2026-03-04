@@ -23,7 +23,7 @@ const projects: Project[] = [
       "Benchmarked execution paths",
       "Modular architecture for algorithm swapping",
     ],
-    link: "https://github.com/henryarin/rsalite",
+    link: "https://github.com/HenryArinaga/RSAlite",
     imageAlt: "RSAlite terminal output mockup",
     // TO ADD YOUR SCREENSHOT:
     // 1. Save your screenshot as: public/images/rsalite-screenshot.png (or .jpg, .gif)
@@ -32,15 +32,22 @@ const projects: Project[] = [
   },
 
   {
-    title: "CPU Usage Visualizer",
+    title: "Reddmeit",
     description:
-      "A C and X11-based visualizer that renders per-core CPU usage as smooth, animated bars using Linux /proc data.",
-    tech: ["C", "X11", "Linux"],
-    imageAlt: "CPU usage bar graph mockup",
+      "An AI-powered LLM tool that helps you discover relevant subreddits based on your interests and topics.",
+    tech: ["AI", "LLM", "Go", "API"],
+    highlights: [
+      "Natural language processing for topic analysis",
+      "Intelligent subreddit recommendations",
+      "User-friendly interface for discovery",
+      "Integration with Reddit API",
+    ],
+    link: "https://github.com/HenryArinaga/Reddmeit",
+    imageAlt: "Reddmeit subreddit discovery tool",
     // TO ADD YOUR SCREENSHOT:
-    // 1. Save your screenshot as: public/images/cpu-visualizer-screenshot.png (or .jpg, .gif)
-    // 2. Replace the imageUrl below with: "/images/cpu-visualizer-screenshot.png"
-    imageUrl: "https://via.placeholder.com/800x600/1a1a2e/eee?text=CPU+Visualizer+Screenshot",
+    // 1. Save your screenshot as: public/images/reddmeit-screenshot.png (or .jpg, .gif)
+    // 2. Replace the imageUrl below with: "/images/reddmeit-screenshot.png"
+    imageUrl: "https://via.placeholder.com/800x600/1a1a2e/eee?text=Reddmeit+Screenshot",
   },
 ];
 
