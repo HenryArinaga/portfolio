@@ -1,0 +1,113 @@
+.blog-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.blog-card__link {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--color-background-card);
+  border: 1px solid var(--color-border-default);
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 200ms var(--easing-smooth), 
+              box-shadow 200ms var(--easing-smooth),
+              border-color 200ms var(--easing-smooth);
+}
+
+.blog-card__link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  border-color: var(--color-border-emphasis);
+}
+
+.blog-card__link:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.blog-card__link:active {
+  transform: translateY(0) scale(0.99);
+}
+
+.blog-card__content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.blog-card__header {
+  margin-bottom: 1rem;
+}
+
+.blog-card__title {
+  font-size: var(--font-size-xl);
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+  color: var(--color-text-primary);
+  line-height: var(--line-height-tight);
+}
+
+.blog-card__meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+.blog-card__date {
+  font-weight: 500;
+}
+
+.blog-card__separator {
+  color: var(--color-text-muted);
+}
+
+.blog-card__read-time {
+  font-weight: 400;
+}
+
+.blog-card__preview {
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-secondary);
+  margin: 0 0 1rem 0;
+  flex: 1;
+}
+
+.blog-card__read-more {
+  display: inline-flex;
+  align-items: center;
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-top: auto;
+  transition: transform 100ms var(--easing-default);
+}
+
+.blog-card__link:hover .blog-card__read-more {
+  transform: translateX(4px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blog-card__link,
+  .blog-card__read-more {
+    transition-duration: 0.01ms;
+  }
+  
+  .blog-card__link:hover,
+  .blog-card__link:focus {
+    transform: none;
+  }
+  
+  .blog-card__link:hover .blog-card__read-more {
+    transform: none;
+  }
+}

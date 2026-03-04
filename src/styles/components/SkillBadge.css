@@ -1,0 +1,105 @@
+.skill-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  transition: transform 100ms var(--easing-default), 
+              background 100ms var(--easing-default),
+              border-color 100ms var(--easing-default);
+}
+
+/* Default variant */
+.skill-badge--default {
+  background: var(--color-background-section);
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border-subtle);
+}
+
+.skill-badge--default:hover {
+  background: var(--color-background-card);
+  border-color: var(--color-border-default);
+  transform: translateY(-1px);
+}
+
+/* Outlined variant */
+.skill-badge--outlined {
+  background: transparent;
+  color: var(--color-text-primary);
+  border: 2px solid var(--color-border-default);
+}
+
+.skill-badge--outlined:hover {
+  border-color: var(--color-primary);
+  transform: translateY(-1px);
+}
+
+/* Filled variant */
+.skill-badge--filled {
+  background: var(--color-primary);
+  color: var(--color-background-page);
+  border: 1px solid transparent;
+}
+
+.skill-badge--filled:hover {
+  background: var(--color-primary-hover, var(--color-primary));
+  transform: translateY(-1px);
+}
+
+.skill-badge__icon {
+  display: inline-flex;
+  align-items: center;
+  font-size: 1.125rem;
+  line-height: 1;
+}
+
+.skill-badge__name {
+  line-height: 1;
+}
+
+.skill-badge__proficiency {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  opacity: 0.8;
+  margin-left: 0.25rem;
+}
+
+/* Proficiency level colors */
+.skill-badge--beginner {
+  --proficiency-color: var(--color-text-muted);
+}
+
+.skill-badge--intermediate {
+  --proficiency-color: var(--color-secondary, var(--color-text-secondary));
+}
+
+.skill-badge--advanced {
+  --proficiency-color: var(--color-primary);
+}
+
+.skill-badge--expert {
+  --proficiency-color: var(--color-accent, var(--color-primary));
+}
+
+.skill-badge--beginner .skill-badge__proficiency,
+.skill-badge--intermediate .skill-badge__proficiency,
+.skill-badge--advanced .skill-badge__proficiency,
+.skill-badge--expert .skill-badge__proficiency {
+  color: var(--proficiency-color);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skill-badge {
+    transition-duration: 0.01ms;
+  }
+  
+  .skill-badge--default:hover,
+  .skill-badge--outlined:hover,
+  .skill-badge--filled:hover {
+    transform: none;
+  }
+}
