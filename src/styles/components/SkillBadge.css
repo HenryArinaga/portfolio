@@ -68,6 +68,38 @@
   margin-left: 0.25rem;
 }
 
+/* Proficiency dots */
+.skill-dots-container {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.skill-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  display: inline-block;
+  transition: transform 100ms var(--easing-default);
+}
+
+.skill-dot--full {
+  border: none;
+}
+
+.skill-dot--empty {
+  background: transparent;
+  border: 1.5px solid;
+}
+
+.skill-dot--half {
+  border: 1.5px solid;
+}
+
+.skill-badge:hover .skill-dot {
+  transform: scale(1.1);
+}
+
 /* Proficiency level colors */
 .skill-badge--beginner {
   --proficiency-color: var(--color-text-muted);
