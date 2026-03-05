@@ -1,6 +1,6 @@
 import ScrollReveal from "../components/ScrollReveal";
 import { SkillBadge } from "../components/SkillBadge";
-import profileImage from "../assets/profile.jpg";
+import profileImage from "../assets/mining.png";
 
 const AboutSection = () => {
   const skills = [
