@@ -26,6 +26,38 @@
   justify-content: center;
 }
 
+.project-card__image-container--clickable {
+  cursor: pointer;
+}
+
+.project-card__image-container--clickable:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: -2px;
+}
+
+.project-card__gallery-badge {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  z-index: 10;
+  pointer-events: none;
+  backdrop-filter: blur(4px);
+}
+
+.project-card__gallery-badge svg {
+  width: 16px;
+  height: 16px;
+}
+
 .project-card__image-container::after {
   content: '';
   position: absolute;

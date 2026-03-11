@@ -9,6 +9,7 @@ type Project = {
   link?: string;
   imageAlt: string;
   imageUrl?: string;
+  galleryImages?: string[];
 };
 
 const projects: Project[] = [
@@ -25,10 +26,12 @@ const projects: Project[] = [
     ],
     link: "https://github.com/HenryArinaga/RSAlite",
     imageAlt: "RSAlite terminal output mockup",
-    // TO ADD YOUR SCREENSHOT:
-    // 1. Save your screenshot as: public/images/rsalite-screenshot.png (or .jpg, .gif)
-    // 2. Replace the imageUrl below with: "/images/rsalite-screenshot.png"
-    imageUrl: "https://via.placeholder.com/800x600/1a1a2e/eee?text=RSAlite+Screenshot",
+    imageUrl: "/images/rsalite-main.png",
+    galleryImages: [
+      "/images/rsalite-main.png",
+      "/images/rsalite-settings.png",
+      "/images/rsalite-logs.png",
+    ],
   },
 
   {
@@ -59,6 +62,7 @@ const ProjectsSection = () => {
     technologies: project.tech,
     highlights: project.highlights,
     imageUrl: project.imageUrl,
+    galleryImages: project.galleryImages,
     githubUrl: project.link,
     projectUrl: undefined,
   }));
@@ -83,6 +87,7 @@ const ProjectsSection = () => {
                 technologies={project.technologies}
                 highlights={project.highlights}
                 imageUrl={project.imageUrl}
+                galleryImages={project.galleryImages}
                 githubUrl={project.githubUrl}
                 projectUrl={project.projectUrl}
               />
