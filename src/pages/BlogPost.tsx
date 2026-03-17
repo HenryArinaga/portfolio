@@ -12,16 +12,26 @@ const BlogPostPage = () => {
 
   const [post, setPost] = useState<BlogPost | null>(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    if (!slug) return;
+    if (!slug) {
+      setLoading(false);
+      setError("Post not found.");
+      return;
+    }
 
     fetchPostBySlug(slug)
       .then(setPost)
+      .catch(() => {
+        setPost(null);
+        setError("Unable to load this post right now.");
+      })
       .finally(() => setLoading(false));
   }, [slug]);
 
   if (loading) return <p>Loading…</p>;
+  if (error) return <p>{error}</p>;
   if (!post) return <p>Post not found.</p>;
 
   return (
@@ -64,6 +74,7 @@ const BlogPostPage = () => {
           <img 
             src={getImageUrl(post.image_url)} 
             alt={post.title}
+            className="blog-post-image"
             style={{ 
               width: '100%', 
               height: 'auto',

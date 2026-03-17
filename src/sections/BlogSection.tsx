@@ -1,6 +1,6 @@
 // src/sections/BlogSection.tsx
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { fetchPosts } from "../services/blogApi";
 import type { BlogPost } from "../services/blogApi";
 import { BlogCard } from "../components/BlogCard";
@@ -21,10 +21,15 @@ const BlogSection = () => {
   const location = useLocation();
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     fetchPosts()
       .then(setPosts)
+      .catch(() => {
+        setPosts([]);
+        setError("Blog posts are temporarily unavailable.");
+      })
       .finally(() => setLoading(false));
   }, []);
 
@@ -60,7 +65,13 @@ const BlogSection = () => {
           </div>
         )}
 
-        {!loading && posts.length > 0 && (
+        {!loading && error && (
+          <div className="blog-loading" role="status">
+            <p>{error}</p>
+          </div>
+        )}
+
+        {!loading && !error && posts.length > 0 && (
           <div className="blog-grid">
             {posts.map((post, index) => (
               <ScrollReveal
@@ -86,17 +97,15 @@ const BlogSection = () => {
           </div>
         )}
 
-        {!loading && posts.length > 0 && (
+        {!loading && !error && posts.length > 0 && (
           <ScrollReveal delay={200} threshold={0.2}>
             <div className="blog-view-all">
-              <a 
-                href={`${import.meta.env.VITE_API_URL || 'http://localhost:8080'}/blog`}
+              <Link
+                to="/blog"
                 className="blog-view-all-button"
-                target="_blank"
-                rel="noopener noreferrer"
               >
                 View all blog posts →
-              </a>
+              </Link>
             </div>
           </ScrollReveal>
         )}

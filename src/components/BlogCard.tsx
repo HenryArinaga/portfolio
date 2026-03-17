@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { getImageUrl } from '../services/blogApi';
 import '../styles/components/BlogCard.css';
 
@@ -19,21 +20,18 @@ export const BlogCard: React.FC<BlogCardProps> = ({
   readTime,
   imageUrl,
 }) => {
-  const blogUrl = `${import.meta.env.VITE_API_URL || 'http://localhost:8080'}/blog/${slug}`;
-  
   return (
     <article className="blog-card">
-      <a 
-        href={blogUrl} 
+      <Link
+        to={`/blog/${slug}`}
         className="blog-card__link"
-        target="_blank"
-        rel="noopener noreferrer"
       >
         {imageUrl && (
           <div className="blog-card__image">
-            <img 
-              src={getImageUrl(imageUrl)} 
+            <img
+              src={getImageUrl(imageUrl)}
               alt={title}
+              className="blog-card__image-element"
               loading="lazy"
             />
           </div>
@@ -64,7 +62,7 @@ export const BlogCard: React.FC<BlogCardProps> = ({
             Read more →
           </span>
         </div>
-      </a>
+      </Link>
     </article>
   );
 };
