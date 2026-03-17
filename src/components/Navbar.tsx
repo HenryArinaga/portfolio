@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { BLOG_SITE_URL } from "../services/blogApi";
 import useActiveSection from "../hooks/useActiveSection";
 
 const Navbar = () => {
@@ -52,10 +53,9 @@ const Navbar = () => {
             Projects
           </a>
           <a 
-            href="#blog" 
-            className={active === "blog" ? "active" : ""}
-            onClick={(e) => handleSmoothScroll(e, "blog")}
-            aria-current={active === "blog" ? "page" : undefined}
+            href={BLOG_SITE_URL}
+            target="_blank"
+            rel="noreferrer"
             role="listitem"
           >
             Blog

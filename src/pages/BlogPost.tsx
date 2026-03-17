@@ -1,14 +1,20 @@
 // src/pages/BlogPost.tsx
 import { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { fetchPostBySlug, getImageUrl } from "../services/blogApi";
 import type { BlogPost } from "../services/blogApi";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
+const calculateReadTime = (content: string): string => {
+  const wordsPerMinute = 200;
+  const wordCount = content.trim().split(/\s+/).filter(Boolean).length;
+  const minutes = Math.max(1, Math.ceil(wordCount / wordsPerMinute));
+  return `${minutes} min read`;
+};
+
 const BlogPostPage = () => {
   const { slug } = useParams();
-  const navigate = useNavigate();
 
   const [post, setPost] = useState<BlogPost | null>(null);
   const [loading, setLoading] = useState(true);
@@ -30,66 +36,92 @@ const BlogPostPage = () => {
       .finally(() => setLoading(false));
   }, [slug]);
 
-  if (loading) return <p>Loading…</p>;
-  if (error) return <p>{error}</p>;
-  if (!post) return <p>Post not found.</p>;
+  if (loading) {
+    return (
+      <section className="blog-page-shell">
+        <div className="blog-page-backdrop" aria-hidden="true" />
+        <div className="blog-page-container">
+          <div className="blog-page-status-card">
+            <p>Loading article...</p>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  if (error || !post) {
+    return (
+      <section className="blog-page-shell">
+        <div className="blog-page-backdrop" aria-hidden="true" />
+        <div className="blog-page-container">
+          <div className="blog-page-status-card">
+            <p>{error || "Post not found."}</p>
+          </div>
+          <div className="blog-page-footer">
+            <Link to="/blog" className="blog-home-link">
+              Return to all posts
+            </Link>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
-    <article
-      style={{
-        maxWidth: "800px",
-        margin: "4rem auto",
-        padding: "0 2rem",
-      }}
-    >
-      <button
-        onClick={() => navigate("/", { state: { scrollToBlog: true } })}
-        className="blog-back-button"
-        aria-label="Go back to blog section"
-      >
-        ← Back to blog
-      </button>
-
-      <header>
-        <h1>{post.title}</h1>
-
-        <p style={{ opacity: 0.7 }}>
-          {new Date(post.created_at).toLocaleDateString()}
-        </p>
-
-        {post.excerpt && (
-          <p style={{ 
-            fontSize: '1.2rem', 
-            fontStyle: 'italic', 
-            marginTop: '1rem',
-            opacity: 0.8 
-          }}>
-            {post.excerpt}
-          </p>
-        )}
-      </header>
-
-      {post.image_url && (
-        <div style={{ margin: '2rem 0' }}>
-          <img 
-            src={getImageUrl(post.image_url)} 
-            alt={post.title}
-            className="blog-post-image"
-            style={{ 
-              width: '100%', 
-              height: 'auto',
-              borderRadius: '8px' 
-            }}
-          />
+    <section className="blog-page-shell blog-article-shell">
+      <div className="blog-page-backdrop" aria-hidden="true" />
+      <article className="blog-article-layout">
+        <div className="blog-article-nav">
+          <Link
+            to="/blog"
+            className="blog-back-button"
+            aria-label="Go back to blog listing"
+          >
+            Back to all posts
+          </Link>
         </div>
-      )}
 
-      <div style={{ marginTop: "2rem" }} className="blog-post">
-        <ReactMarkdown remarkPlugins={[remarkGfm]}>
-          {post.content}
-        </ReactMarkdown>
-      </div>
-    </article>
+        <header className="blog-article-hero">
+          <div className="blog-article-meta">
+            <time dateTime={post.created_at}>
+              {new Date(post.created_at).toLocaleDateString("en-US", {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              })}
+            </time>
+            <span className="blog-article-meta-separator" aria-hidden="true">
+              •
+            </span>
+            <span>{calculateReadTime(post.content)}</span>
+          </div>
+
+          <h1 className="blog-article-title">{post.title}</h1>
+
+          {post.excerpt && (
+            <p className="blog-article-excerpt">{post.excerpt}</p>
+          )}
+        </header>
+
+        {post.image_url && (
+          <div className="blog-article-image-frame">
+            <img
+              src={getImageUrl(post.image_url)}
+              alt={post.title}
+              className="blog-post-image"
+            />
+          </div>
+        )}
+
+        <div className="blog-article-body">
+          <div className="blog-post">
+            <ReactMarkdown remarkPlugins={[remarkGfm]}>
+              {post.content}
+            </ReactMarkdown>
+          </div>
+        </div>
+      </article>
+    </section>
   );
 };
 

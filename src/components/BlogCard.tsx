@@ -1,6 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { getImageUrl } from '../services/blogApi';
+import { BLOG_SITE_URL, getImageUrl } from '../services/blogApi';
 import '../styles/components/BlogCard.css';
 
 export interface BlogCardProps {
@@ -22,9 +21,11 @@ export const BlogCard: React.FC<BlogCardProps> = ({
 }) => {
   return (
     <article className="blog-card">
-      <Link
-        to={`/blog/${slug}`}
+      <a
+        href={`${BLOG_SITE_URL}/${slug}`}
         className="blog-card__link"
+        target="_blank"
+        rel="noreferrer"
       >
         {imageUrl && (
           <div className="blog-card__image">
@@ -57,12 +58,12 @@ export const BlogCard: React.FC<BlogCardProps> = ({
           </header>
           
           <p className="blog-card__preview">{preview}</p>
-          
+        
           <span className="blog-card__read-more" aria-label={`Read more about ${title}`}>
             Read more →
           </span>
         </div>
-      </Link>
+      </a>
     </article>
   );
 };

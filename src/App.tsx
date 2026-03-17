@@ -7,8 +7,6 @@ import BlogSection from "./sections/BlogSection";
 import FooterSection from "./sections/FooterSection";
 import Navbar from "./components/Navbar";
 import StarTrail from "./components/StarTrail";
-import BlogIndex from "./pages/BlogIndex";
-import BlogPost from "./pages/BlogPost";
 
 import "./styles/layout.css";
 import "./styles/animations.css";
@@ -39,8 +37,6 @@ function App() {
     <HashRouter>
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/blog" element={<BlogIndex />} />
-        <Route path="/blog/:slug" element={<BlogPost />} />
       </Routes>
     </HashRouter>
   );

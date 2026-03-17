@@ -1,7 +1,6 @@
 // src/sections/BlogSection.tsx
 import { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
-import { fetchPosts } from "../services/blogApi";
+import { BLOG_SITE_URL, fetchPosts } from "../services/blogApi";
 import type { BlogPost } from "../services/blogApi";
 import { BlogCard } from "../components/BlogCard";
 import { ScrollReveal } from "../components/ScrollReveal";
@@ -18,7 +17,6 @@ const calculateReadTime = (content: string): string => {
 };
 
 const BlogSection = () => {
-  const location = useLocation();
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -33,15 +31,6 @@ const BlogSection = () => {
       .finally(() => setLoading(false));
   }, []);
 
-  useEffect(() => {
-    if (location.state?.scrollToBlog) {
-      const section = document.getElementById("blog");
-      if (section) {
-        section.scrollIntoView({ behavior: "smooth" });
-      }
-    }
-  }, [location.state]);
-
   return (
     <section className="blog" id="blog">
       <div className="container">
@@ -51,10 +40,10 @@ const BlogSection = () => {
 
         <ScrollReveal delay={100} threshold={0.2}>
           <div className="blog-wip">
-            <h3 className="blog-wip-title">Work in Progress</h3>
+            <h3 className="blog-wip-title">Latest Writing</h3>
             <p className="blog-wip-text">
-              This blog is powered by a custom Go + SQLite backend deployed on
-              AWS. Frontend integration and routing are currently being finalized.
+              The full blog lives on the custom Go backend. These are the most
+              recent posts, and opening one takes you straight to the live blog.
             </p>
           </div>
         </ScrollReveal>
@@ -100,12 +89,14 @@ const BlogSection = () => {
         {!loading && !error && posts.length > 0 && (
           <ScrollReveal delay={200} threshold={0.2}>
             <div className="blog-view-all">
-              <Link
-                to="/blog"
+              <a
+                href={BLOG_SITE_URL}
                 className="blog-view-all-button"
+                target="_blank"
+                rel="noreferrer"
               >
                 View all blog posts →
-              </Link>
+              </a>
             </div>
           </ScrollReveal>
         )}

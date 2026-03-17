@@ -2,6 +2,8 @@ const API_BASE_URL =
   import.meta.env.VITE_API_BASE ||
   (import.meta.env.DEV ? "http://localhost:8080" : "https://blog.arinaga.dev");
 
+export const BLOG_SITE_URL = `${API_BASE_URL}/blog`;
+
 const ADMIN_HEADERS = {
   "Content-Type": "application/json",
   Authorization: `Bearer ${import.meta.env.VITE_ADMIN_TOKEN}`,
