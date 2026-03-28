@@ -1,7 +1,7 @@
 // src/pages/BlogPost.tsx
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import { fetchPostBySlug, getImageUrl } from "../services/blogApi";
+import { useParams } from "react-router-dom";
+import { BLOG_SITE_URL, fetchPostBySlug, getImageUrl } from "../services/blogApi";
 import type { BlogPost } from "../services/blogApi";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
@@ -58,9 +58,9 @@ const BlogPostPage = () => {
             <p>{error || "Post not found."}</p>
           </div>
           <div className="blog-page-footer">
-            <Link to="/blog" className="blog-home-link">
+            <a href={BLOG_SITE_URL} className="blog-home-link">
               Return to all posts
-            </Link>
+            </a>
           </div>
         </div>
       </section>
@@ -72,13 +72,13 @@ const BlogPostPage = () => {
       <div className="blog-page-backdrop" aria-hidden="true" />
       <article className="blog-article-layout">
         <div className="blog-article-nav">
-          <Link
-            to="/blog"
+          <a
+            href={BLOG_SITE_URL}
             className="blog-back-button"
             aria-label="Go back to blog listing"
           >
             Back to all posts
-          </Link>
+          </a>
         </div>
 
         <header className="blog-article-hero">

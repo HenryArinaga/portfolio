@@ -380,7 +380,7 @@
 
 .about-profile-image:hover {
   transform: scale(1.05);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--shadow-soft-dark);
 }
 
 .about-biography {
@@ -417,7 +417,7 @@
 .about-resume-button:hover {
   transform: translateY(-2px);
   background: var(--color-primary-hover);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--shadow-soft-primary);
 }
 
 .about-resume-button:active {
@@ -683,9 +683,9 @@
   min-height: 100vh;
   padding: clamp(4rem, 6vw, 6rem) 1.25rem 3rem;
   background:
-    radial-gradient(circle at top left, rgba(96, 165, 250, 0.18), transparent 28%),
-    radial-gradient(circle at top right, rgba(34, 211, 238, 0.14), transparent 22%),
-    linear-gradient(180deg, rgba(8, 12, 30, 0.98) 0%, rgba(10, 16, 35, 1) 100%);
+    radial-gradient(circle at top left, var(--color-blog-page-glow-primary), transparent 28%),
+    radial-gradient(circle at top right, var(--color-blog-page-glow-accent), transparent 22%),
+    linear-gradient(180deg, var(--color-blog-page-surface-top) 0%, var(--color-blog-page-surface-bottom) 100%);
   overflow: hidden;
 }
 
@@ -693,10 +693,10 @@
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(138, 180, 255, 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(138, 180, 255, 0.05) 1px, transparent 1px);
+    linear-gradient(var(--color-blog-grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-blog-grid-line-alt) 1px, transparent 1px);
   background-size: 72px 72px;
-  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.75), transparent 92%);
+  mask-image: linear-gradient(180deg, var(--color-blog-mask), transparent 92%);
   pointer-events: none;
 }
 
@@ -712,14 +712,12 @@
 .blog-article-hero {
   position: relative;
   padding: clamp(2rem, 4vw, 3rem);
-  border: 1px solid rgba(147, 197, 253, 0.25);
+  border: 1px solid var(--color-blog-panel-border-strong);
   border-radius: 28px;
   background:
-    linear-gradient(135deg, rgba(12, 20, 44, 0.95), rgba(6, 10, 24, 0.84)),
-    rgba(5, 8, 22, 0.55);
-  box-shadow:
-    0 20px 60px rgba(0, 0, 0, 0.28),
-    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    linear-gradient(135deg, var(--color-blog-panel-top), var(--color-blog-panel-bottom)),
+    var(--color-blog-panel-fill);
+  box-shadow: var(--shadow-blog-panel);
   backdrop-filter: blur(14px);
 }
 
@@ -733,9 +731,9 @@
   padding: 0.35rem 0.8rem;
   margin-bottom: 1.25rem;
   border-radius: 999px;
-  border: 1px solid rgba(103, 232, 249, 0.35);
-  background: rgba(14, 116, 144, 0.16);
-  color: var(--color-accent);
+  border: 1px solid var(--color-blog-eyebrow-border);
+  background: var(--color-blog-eyebrow-bg);
+  color: var(--color-blog-eyebrow-text);
   font-size: 0.78rem;
   font-weight: var(--font-semibold);
   letter-spacing: 0.14em;
@@ -770,8 +768,8 @@
 .blog-page-stat {
   padding: 1rem 1.1rem;
   border-radius: 18px;
-  border: 1px solid rgba(147, 197, 253, 0.18);
-  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--color-blog-panel-border);
+  background: var(--color-blog-stat-bg);
 }
 
 .blog-page-stat strong,
@@ -810,8 +808,8 @@
   gap: 0.5rem;
   padding: 0.95rem 1.35rem;
   border-radius: 999px;
-  border: 1px solid rgba(147, 197, 253, 0.22);
-  background: rgba(8, 16, 36, 0.72);
+  border: 1px solid var(--color-blog-panel-border-soft);
+  background: var(--color-blog-link-bg);
   color: var(--color-text-primary);
   text-decoration: none;
   font-weight: var(--font-medium);
@@ -824,8 +822,8 @@
 .blog-home-link:hover,
 .blog-back-button:hover {
   transform: translateY(-2px);
-  border-color: rgba(96, 165, 250, 0.45);
-  background: rgba(12, 24, 56, 0.88);
+  border-color: var(--color-blog-panel-border-hover);
+  background: var(--color-blog-link-bg-hover);
   text-decoration: none;
 }
 
@@ -833,9 +831,9 @@
 .blog-article-body {
   padding: clamp(1.5rem, 3vw, 2rem);
   border-radius: 24px;
-  border: 1px solid rgba(147, 197, 253, 0.18);
-  background: rgba(7, 12, 28, 0.78);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.22);
+  border: 1px solid var(--color-blog-panel-border);
+  background: var(--color-blog-body-bg);
+  box-shadow: var(--shadow-blog-surface);
   backdrop-filter: blur(10px);
 }
 
@@ -869,16 +867,16 @@
 }
 
 .blog-article-meta-separator {
-  color: rgba(147, 197, 253, 0.55);
+  color: var(--color-blog-meta-separator);
 }
 
 .blog-article-image-frame {
   margin: 1.5rem 0;
   padding: 0.8rem;
   border-radius: 28px;
-  border: 1px solid rgba(147, 197, 253, 0.18);
-  background: rgba(7, 12, 28, 0.78);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.22);
+  border: 1px solid var(--color-blog-panel-border);
+  background: var(--color-blog-body-bg);
+  box-shadow: var(--shadow-blog-surface);
 }
 
 .blog-post-image {
@@ -1057,7 +1055,7 @@
 .footer-bottom {
   margin-top: 2rem;
   padding-top: 1.5rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid var(--color-footer-border);
   display: flex;
   justify-content: space-between;
   align-items: center;

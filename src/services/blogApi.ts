@@ -2,12 +2,10 @@ const API_BASE_URL =
   import.meta.env.VITE_API_BASE ||
   (import.meta.env.DEV ? "http://localhost:8080" : "https://blog.arinaga.dev");
 
-export const BLOG_SITE_URL = `${API_BASE_URL}/blog`;
+const BLOG_ORIGIN =
+  import.meta.env.VITE_BLOG_ORIGIN || "https://blog.arinaga.dev";
 
-const ADMIN_HEADERS = {
-  "Content-Type": "application/json",
-  Authorization: `Bearer ${import.meta.env.VITE_ADMIN_TOKEN}`,
-};
+export const BLOG_SITE_URL = `${BLOG_ORIGIN}/blog`;
 
 export interface BlogPost {
   id: number;
@@ -47,51 +45,4 @@ export async function fetchPostPreviews(): Promise<BlogPost[]> {
 export function getImageUrl(imageUrl: string): string {
   if (!imageUrl) return '';
   return imageUrl.startsWith('http') ? imageUrl : `${API_BASE_URL}${imageUrl}`;
-}
-
-export async function fetchAdminPosts(): Promise<BlogPost[]> {
-  const res = await fetch(`${API_BASE_URL}/api/admin/posts`, {
-    headers: ADMIN_HEADERS,
-  });
-
-  if (!res.ok) {
-    throw new Error("Failed to fetch admin posts");
-  }
-
-  return res.json();
-}
-
-export async function createAdminPost(data: {
-  title: string;
-  content: string;
-  published: boolean;
-}) {
-  const res = await fetch(`${API_BASE_URL}/api/admin/posts`, {
-    method: "POST",
-    headers: ADMIN_HEADERS,
-    body: JSON.stringify(data),
-  });
-
-  if (!res.ok) {
-    throw new Error("Failed to create post");
-  }
-}
-
-export async function updateAdminPost(
-  id: number,
-  data: {
-    title: string;
-    content: string;
-    published: boolean;
-  }
-) {
-  const res = await fetch(`${API_BASE_URL}/api/admin/posts/${id}`, {
-    method: "PUT",
-    headers: ADMIN_HEADERS,
-    body: JSON.stringify(data),
-  });
-
-  if (!res.ok) {
-    throw new Error("Failed to update post");
-  }
 }

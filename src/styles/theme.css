@@ -306,6 +306,38 @@
   );
   --gradient-footer: linear-gradient(to bottom, var(--color-bg-page) 0%, rgba(5, 8, 22, 0) 50%);
   --gradient-footer-inset: inset 0 -10px 18px var(--color-accent-light), inset 0 -18px 28px rgba(0, 0, 0, 0.55);
+
+  /* Blog page surfaces */
+  --color-blog-page-glow-primary: rgba(96, 165, 250, 0.18);
+  --color-blog-page-glow-accent: rgba(34, 211, 238, 0.14);
+  --color-blog-page-surface-top: rgba(8, 12, 30, 0.98);
+  --color-blog-page-surface-bottom: rgba(10, 16, 35, 1);
+  --color-blog-grid-line: rgba(138, 180, 255, 0.06);
+  --color-blog-grid-line-alt: rgba(138, 180, 255, 0.05);
+  --color-blog-mask: rgba(0, 0, 0, 0.75);
+  --color-blog-panel-border-strong: rgba(147, 197, 253, 0.25);
+  --color-blog-panel-border: rgba(147, 197, 253, 0.18);
+  --color-blog-panel-border-hover: rgba(96, 165, 250, 0.45);
+  --color-blog-panel-border-soft: rgba(147, 197, 253, 0.22);
+  --color-blog-panel-top: rgba(12, 20, 44, 0.95);
+  --color-blog-panel-bottom: rgba(6, 10, 24, 0.84);
+  --color-blog-panel-fill: rgba(5, 8, 22, 0.55);
+  --color-blog-panel-shadow: rgba(0, 0, 0, 0.28);
+  --color-blog-panel-highlight: rgba(255, 255, 255, 0.06);
+  --color-blog-eyebrow-border: rgba(103, 232, 249, 0.35);
+  --color-blog-eyebrow-bg: rgba(14, 116, 144, 0.32);
+  --color-blog-eyebrow-text: var(--cyan-100);
+  --color-blog-stat-bg: rgba(255, 255, 255, 0.03);
+  --color-blog-link-bg: rgba(8, 16, 36, 0.72);
+  --color-blog-link-bg-hover: rgba(12, 24, 56, 0.88);
+  --color-blog-body-bg: rgba(7, 12, 28, 0.78);
+  --color-blog-body-shadow: rgba(0, 0, 0, 0.22);
+  --color-blog-meta-separator: rgba(147, 197, 253, 0.55);
+  --color-footer-border: rgba(255, 255, 255, 0.1);
+  --shadow-soft-dark: 0 8px 24px rgba(0, 0, 0, 0.15);
+  --shadow-soft-primary: 0 4px 12px rgba(0, 0, 0, 0.15);
+  --shadow-blog-panel: 0 20px 60px rgba(0, 0, 0, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  --shadow-blog-surface: 0 16px 40px rgba(0, 0, 0, 0.22);
   
   /* ============================================
      SEMANTIC TOKENS - Border Radius
