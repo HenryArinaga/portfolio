@@ -484,6 +484,16 @@
   margin-bottom: 2rem;
 }
 
+.projects-group + .projects-group {
+  margin-top: 3rem;
+}
+
+.projects-subtitle {
+  font-size: var(--font-size-2xl);
+  margin: 0 0 1.5rem 0;
+  color: var(--color-text-primary);
+}
+
 /* Blog Section */
 
 .blog {
