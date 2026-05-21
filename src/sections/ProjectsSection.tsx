@@ -58,6 +58,12 @@ const projectGroups: ProjectGroup[] = [
           "Loaded structured move data from JSON into a modular server architecture",
         ],
         imageAlt: "The Danger Room backend project",
+        imageUrl: "/images/dangerRoom/dangerRoom2.png",
+        galleryImages: [
+          "/images/dangerRoom/dangerRoom2.png",
+          "/images/dangerRoom/dangerRoom3.png",
+          "/images/dangerRoom/dangerRoom1.png",
+        ],
       },
       {
         title: "Cave In",
@@ -70,7 +76,13 @@ const projectGroups: ProjectGroup[] = [
           "Added hurt-state animation, hit cooldown logic, and player feedback",
           "Created gem sparkle and movement polish for stronger game feel",
         ],
+        link: "https://github.com/HenryArinaga/CaveIn",
         imageAlt: "Cave In gameplay systems project",
+        imageUrl: "/images/cavein/cavein1.png",
+        galleryImages: [
+          "/images/cavein/cavein1.png",
+          "/images/cavein/cavein2.png",
+        ],
       },
     ],
   },
