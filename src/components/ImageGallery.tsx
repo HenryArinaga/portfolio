@@ -4,6 +4,7 @@ import '../styles/components/ImageGallery.css';
 
 export interface ImageGalleryProps {
   images: string[];
+  captions?: string[];
   isOpen: boolean;
   initialIndex: number;
   onClose: () => void;
@@ -11,6 +12,7 @@ export interface ImageGalleryProps {
 
 export const ImageGallery: React.FC<ImageGalleryProps> = ({
   images,
+  captions,
   isOpen,
   initialIndex,
   onClose,
@@ -49,6 +51,8 @@ export const ImageGallery: React.FC<ImageGalleryProps> = ({
 
   if (!isOpen) return null;
 
+  const currentCaption = captions?.[currentIndex];
+
   const galleryContent = (
     <div className="gallery-overlay" onClick={onClose}>
       <div className="gallery-container" onClick={(e) => e.stopPropagation()}>
@@ -86,6 +90,10 @@ export const ImageGallery: React.FC<ImageGalleryProps> = ({
             className="gallery-image"
           />
         </div>
+
+        {currentCaption && (
+          <p className="gallery-caption">{currentCaption}</p>
+        )}
 
         {images.length > 1 && (
           <div className="gallery-counter">

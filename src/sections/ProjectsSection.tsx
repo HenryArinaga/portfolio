@@ -10,16 +10,20 @@ type Project = {
   imageAlt: string;
   imageUrl?: string;
   galleryImages?: string[];
+  galleryCaptions?: string[];
 };
 
 type ProjectGroup = {
   title: string;
+  description: string;
   projects: Project[];
 };
 
 const projectGroups: ProjectGroup[] = [
   {
     title: "Personal Projects",
+    description:
+      "These are the projects I work on in my free time to deepen my experience, experiment with new ideas, and keep improving my skills as a developer.",
     projects: [
       {
         title: "RSAlite",
@@ -45,6 +49,8 @@ const projectGroups: ProjectGroup[] = [
   },
   {
     title: "Academic Projects",
+    description:
+      "Built during my final semester at CSU Bakersfield, these projects show how I work in team environments, share ownership, and contribute to larger group efforts.",
     projects: [
       {
         title: "The Danger Room",
@@ -63,6 +69,11 @@ const projectGroups: ProjectGroup[] = [
           "/images/dangerRoom/dangerRoom2.png",
           "/images/dangerRoom/dangerRoom3.png",
           "/images/dangerRoom/dangerRoom1.png",
+        ],
+        galleryCaptions: [
+          "Main simulator screen showing character selection, matchup setup, and frame timeline output.",
+          "Analytics view for comparing fighter stats, pacing, and matchup trends.",
+          "Detailed matchup matrix with ranking data pulled from the backend API.",
         ],
       },
       {
@@ -83,6 +94,10 @@ const projectGroups: ProjectGroup[] = [
           "/images/cavein/cavein1.png",
           "/images/cavein/cavein2.png",
         ],
+        galleryCaptions: [
+          "Gameplay view showing player movement, stamina UI, hazards, and collectible placement.",
+          "A later run highlighting pacing, obstacle density, and survival gameplay feedback.",
+        ],
       },
     ],
   },
@@ -102,6 +117,7 @@ const ProjectsSection = () => {
             highlights: project.highlights,
             imageUrl: project.imageUrl,
             galleryImages: project.galleryImages,
+            galleryCaptions: project.galleryCaptions,
             githubUrl: project.link,
             projectUrl: undefined,
           }));
@@ -109,6 +125,7 @@ const ProjectsSection = () => {
           return (
             <div className="projects-group" key={group.title}>
               <h3 className="projects-subtitle">{group.title}</h3>
+              <p className="projects-group-description">{group.description}</p>
 
               <div className="projects-grid">
                 {projectCards.map((project, index) => (
@@ -126,6 +143,7 @@ const ProjectsSection = () => {
                       highlights={project.highlights}
                       imageUrl={project.imageUrl}
                       galleryImages={project.galleryImages}
+                      galleryCaptions={project.galleryCaptions}
                       githubUrl={project.githubUrl}
                       projectUrl={project.projectUrl}
                     />

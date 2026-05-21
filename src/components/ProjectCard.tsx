@@ -9,6 +9,7 @@ export interface ProjectCardProps {
   highlights?: string[];
   imageUrl?: string;
   galleryImages?: string[];
+  galleryCaptions?: string[];
   projectUrl?: string;
   githubUrl?: string;
 }
@@ -20,6 +21,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
   highlights,
   imageUrl,
   galleryImages,
+  galleryCaptions,
   projectUrl,
   githubUrl,
 }) => {
@@ -99,6 +101,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
       {hasGallery && (
         <ImageGallery
           images={galleryImages}
+          captions={galleryCaptions}
           isOpen={galleryOpen}
           initialIndex={galleryIndex}
           onClose={() => setGalleryOpen(false)}

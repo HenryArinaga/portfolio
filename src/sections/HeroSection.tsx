@@ -35,7 +35,7 @@ const HeroSection = () => {
           <p className="hero-tagline">
             Building backend systems, tools, and educational projects.
           </p>
-          <p className="hero-subtitle">CSUB Computer Science Student</p>
+          <p className="hero-subtitle">CSUB B.S. in Computer Science</p>
         </div>
 
         {/* CTA (social links) with staggered animation */}

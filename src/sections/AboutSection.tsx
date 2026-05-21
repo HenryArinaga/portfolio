@@ -35,7 +35,7 @@ const AboutSection = () => {
           <ScrollReveal delay={200} threshold={0.2}>
             <div className="about-biography">
               <p className="about-text">
-                I'm Henry Arinaga, a first-generation Computer Science student who enjoys building
+                I'm Henry Arinaga, a first-generation B.S. in Computer Science who enjoys building
                 reliable backend systems and tools. Most of my projects live close to the metal:
                 C, Linux, system calls, and data structures. I like taking vague ideas, turning
                 them into clear designs, and shipping code that is easy to reason about.
