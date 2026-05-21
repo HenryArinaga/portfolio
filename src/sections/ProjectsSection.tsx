@@ -35,22 +35,17 @@ const projects: Project[] = [
   },
 
   {
-    title: "Reddmeit",
+    title: "The Danger Room",
     description:
-      "An AI-powered LLM tool that helps you discover relevant subreddits based on your interests and topics.",
-    tech: ["AI", "LLM", "Go", "API"],
+      "Backend for a fighting-game simulation platform that serves character data, move analytics, matchup summaries, and simulation results through a Go API.",
+    tech: ["Go", "REST API", "JSON", "HTTP"],
     highlights: [
-      "Natural language processing for topic analysis",
-      "Intelligent subreddit recommendations",
-      "User-friendly interface for discovery",
-      "Integration with Reddit API",
+      "Built simulation endpoints for move-by-move matchup analysis",
+      "Exposed character, matchup, and fastest-normal ranking APIs",
+      "Added observability with health checks, request logging, and metrics",
+      "Loaded structured move data from JSON into a modular server architecture",
     ],
-    link: "https://github.com/HenryArinaga/Reddmeit",
-    imageAlt: "Reddmeit subreddit discovery tool",
-    // TO ADD YOUR SCREENSHOT:
-    // 1. Save your screenshot as: public/images/reddmeit-screenshot.png (or .jpg, .gif)
-    // 2. Replace the imageUrl below with: "/images/reddmeit-screenshot.png"
-    imageUrl: "https://via.placeholder.com/800x600/1a1a2e/eee?text=Reddmeit+Screenshot",
+    imageAlt: "The Danger Room backend project",
   },
 ];
 
