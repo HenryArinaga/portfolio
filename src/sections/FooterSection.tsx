@@ -55,7 +55,7 @@ const FooterSection = () => {
           <div className="footer-social">
             <div className="footer-social-links">
               <a
-                href="https://github.com/henryarin"
+                href="https://github.com/HenryArinaga"
                 target="_blank"
                 rel="noreferrer"
                 className="footer-social-link"
