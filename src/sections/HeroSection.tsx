@@ -43,7 +43,7 @@ const HeroSection = () => {
           className={`hero-socials ${!prefersReducedMotion ? 'hero-stagger-5' : ''}`}
         >
           <a 
-            href="https://github.com/henryarin" 
+            href="https://github.com/HenryArinaga" 
             target="_blank" 
             rel="noreferrer"
             className="hero-social-link"
